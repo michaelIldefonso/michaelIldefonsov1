@@ -15,9 +15,9 @@
 }
 
 body {
-  background-color: var(--bg-primary);
   color: var(--text);
   font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
 }
 
 nav {

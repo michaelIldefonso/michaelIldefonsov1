@@ -15,7 +15,20 @@ const projects = [
       { url: 'https://github.com/michaelIldefonso/rekapo/releases', label: 'App' },
     ],
   },
-  
+  {
+    title: 'Rekapo',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    techStack: ['Vue.js', 'Node.js', 'Express', 'MongoDB'],
+    githubUrl: [
+      { url: 'https://github.com/michaelIldefonso/rekapoApp', label: 'Frontend' },
+      { url: 'https://github.com/michaelIldefonso/rekapoBackend', label: 'Backend' },
+    ],
+    liveUrl: [
+      { url: 'https://rekapo.com', label: 'Backend' },
+      { url: 'https://github.com/michaelIldefonso/rekapo/releases', label: 'App' },
+    ],
+  },
 ]
 </script>
 

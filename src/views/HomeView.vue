@@ -1,5 +1,5 @@
 <script setup>
-import NavbarTop from '@/components/NavbarTop.vue'
+import HeaderNavigation from '@/components/HeaderNavigation.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import AboutSection from '@/components/AboutSection.vue'
 import SkillSection from '@/components/SkillSection.vue'
@@ -10,26 +10,33 @@ import FooterSection from '@/components/FooterSection.vue'
 
 <template>
   <n-flex justify="center" align="center" wrap>
-    <nav>
-      <NavbarTop />
-    </nav>
-    <main>
-      <HeroSection />
-      <n-divider />
+    <div>
+      <nav>
+        <HeaderNavigation />
+      </nav>
+      <main>
+        <n-space vertical>
+          <HeroSection />
 
-      <AboutSection />
-      <n-divider />
+          <n-divider />
 
-      <SkillSection />
-      <n-divider />
+          <AboutSection />
+          <n-divider />
 
-      <ProjectSection />
-      <n-divider />
+          <SkillSection />
+          <n-divider />
 
-      <ContactSection />
-      <n-divider />
+          <ProjectSection />
+          <n-divider />
 
-      <FooterSection />
-    </main>
+          <ContactSection />
+          <n-divider />
+
+          <FooterSection />
+        </n-space>
+      </main>
+    </div>
   </n-flex>
 </template>
+
+<style scoped></style>
