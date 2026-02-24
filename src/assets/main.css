@@ -1,6 +1,6 @@
 :root {
-  --bg-darkest: #060e27;
-  --bg-primary: #0b132b;
+  --bg-darkest: #040a19;
+  --bg-primary: #060b19;
   --bg-surface: #0f172a;
   --accent: #5bc0be;
   --accent-hover: #4aa8a6;
@@ -18,10 +18,6 @@ body {
   color: var(--text);
   font-family: 'Inter', sans-serif;
   background-color: var(--bg-primary);
-}
-
-nav {
-  background-color: var(--bg-darkest);
 }
 
 footer {
