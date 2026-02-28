@@ -9,31 +9,31 @@ import FooterSection from '@/components/FooterSection.vue'
 </script>
 
 <template>
-  <n-flex justify="center" align="center" wrap>
-    <nav>
-      <HeaderNavigation />
-    </nav>
-    <main>
-      <n-space vertical>
-        <HeroSection />
-        <n-divider />
+  <div style="display: flex; justify-content: center; width: 100%">
+    <div style="max-width: 1200px; width: 100%">
+      <nav><HeaderNavigation /></nav>
+      <main>
+        <n-space vertical>
+          <HeroSection />
+          <n-divider />
 
-        <AboutSection />
-        <n-divider />
+          <AboutSection />
+          <n-divider />
 
-        <SkillSection />
-        <n-divider />
+          <SkillSection />
+          <n-divider />
 
-        <ProjectSection />
-        <n-divider />
+          <ProjectSection />
+          <n-divider />
 
-        <ContactSection />
-        <n-divider />
+          <ContactSection />
+          <n-divider />
 
-        <FooterSection />
-      </n-space>
-    </main>
-  </n-flex>
+          <FooterSection />
+        </n-space>
+      </main>
+    </div>
+  </div>
 </template>
 
 <style scoped></style>

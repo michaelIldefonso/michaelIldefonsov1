@@ -1,5 +1,5 @@
 <script setup>
-import { h } from 'vue'
+import { h, ref } from 'vue'
 import { NIcon } from 'naive-ui'
 import {
   LogoGithub,
@@ -14,19 +14,31 @@ import {
 function renderIcon(icon) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
-
+const activeSection = ref('about')
 const menuOptions = [
-  { key: 'about', icon: renderIcon(PersonOutline) },
-  { key: 'skills', icon: renderIcon(LayersOutline) },
-  { key: 'projects', icon: renderIcon(CodeSlashOutline) },
-  { key: 'contact', icon: renderIcon(MailOutline) },
+  { key: 'about', label: '', icon: renderIcon(PersonOutline) },
+  { key: 'skills', label: '', icon: renderIcon(LayersOutline) },
+  { key: 'projects', label: '', icon: renderIcon(CodeSlashOutline) },
+  { key: 'contact', label: '', icon: renderIcon(MailOutline) },
 ]
+const scrollToSection = (sectionKey) => {
+  activeSection.value = sectionKey
+  const element = document.getElementById(sectionKey)
+  element?.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <template>
   <aside class="sidebar">
     <div class="sidebar-menu">
-      <n-menu :options="menuOptions" mode="vertical" :icon-size="28" />
+      <n-menu
+        :options="menuOptions"
+        mode="vertical"
+        :icon-size="28"
+        class="navigation"
+        :value="activeSection"
+        @update:value="scrollToSection"
+      />
     </div>
 
     <div class="sidebar-socials">
@@ -36,13 +48,13 @@ const menuOptions = [
           href="https://github.com/michaelIldefonso"
           target="_blank"
           circle
-          size="large"
+          size="medium"
         >
           <template #icon>
             <NIcon><LogoGithub /></NIcon>
           </template>
         </n-button>
-        <n-button tag="a" href="https://linkedin.com/in/..." target="_blank" circle size="large">
+        <n-button tag="a" href="https://linkedin.com/in/..." target="_blank" circle size="medium">
           <template #icon>
             <NIcon><LogoLinkedin /></NIcon>
           </template>
@@ -58,7 +70,7 @@ const menuOptions = [
   top: 0;
   left: 0;
   height: 100vh;
-  width: 80px; /* Replaced 13vh with a fixed width */
+  width: 100px; /* Replaced 13vh with a fixed width */
   background-color: var(--bg-darkest);
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
   z-index: 1000;
@@ -77,14 +89,41 @@ const menuOptions = [
   justify-content: center;
   width: 100%;
 }
+.navigation {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+:deep(.n-menu) {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+:deep(.n-menu-item) {
+  width: 100px !important;
+  height: 60px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 5px 0 !important;
+}
+
+:deep(.n-menu-item-content) {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
 
 .sidebar-socials {
   padding-bottom: 24px;
-}
-
-/* Optional: Center the menu icons horizontally inside the menu item */
-:deep(.n-menu-item-content) {
-  justify-content: center;
-  padding: 0 !important; /* Removes default Naive UI padding if it offsets the icon */
 }
 </style>

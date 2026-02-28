@@ -6,26 +6,20 @@ const title = 'Full-Stack Developer'
 </script>
 
 <template>
-  <div class="hero-grid">
-    <div class="navbar-content">
-      <!-- Add your image here -->
-      <!-- <div class="image-me">
-        <img src="@/assets/me.svg" alt="Logo" class="logo" />
-      </div> -->
-      <n-menu :options="menuOptions" mode="vertical"></n-menu>
-    </div>
-  </div>
+  <div class="hero-grid"></div>
+  <div class="gradient-line"></div>
+
   <!-- grid here -->
   <section class="section hero">
     <div class="hero-content">
-      <n class="tagline">Hey, I'm</n>
+      <n-text class="tagline">Hey, I'm</n-text>
       <n-h1 id="name">{{ name }}</n-h1>
       <n-h2 id="title">{{ title }}</n-h2>
-      <n-p id="tagline"
-        >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab perspiciatis, natus ipsum,
-        quos saepe harum <br />
+      <n-text id="tagline">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab perspiciatis, natus ipsum, quos
+        saepe harum <br />
         iste ipsam quibusdam cumque esse error odit corrupti, amet libero vel dignissimos tenetur
-        soluta. Magnam!</n-p
+        soluta. Magnam!</n-text
       >
     </div>
     <n-space vertical>
@@ -82,9 +76,30 @@ const title = 'Full-Stack Developer'
   display: flex;
   flex-direction: column;
   padding: 0 80px;
-  position: relative; /* needed for ::after */
+  position: relative;
   overflow: hidden;
 }
+/* .gradient-line {
+  position: absolute;
+  top: 70%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 10%,
+    rgba(91, 192, 190, 0.8) 50%,
+    transparent 90%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transform: rotate(-15deg);
+  filter: blur(0.5px);
+  box-shadow: 0 0 20px rgba(91, 192, 190, 0.6), 0 0 40px rgba(91, 192, 190, 0.3);
+  animation: laserPulse 3s ease-in-out infinite;
+} */
 
 .hero-content {
   display: flex;
@@ -99,27 +114,23 @@ const title = 'Full-Stack Developer'
   gap: 8px;
   margin-top: auto;
 }
-.hero-social {
-  display: flex;
-  padding: 2rem 0;
-  gap: 16px;
-}
 
 .hero-grid {
   position: absolute;
   top: 0;
   right: 0;
-  width: 55%;
+  width: 120%;
   height: 100%;
   background-image:
     linear-gradient(rgba(91, 192, 190, 0.466) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(91, 192, 190, 0.466) 1px, transparent 1px),
-    radial-gradient(ellipse at 60% 50%, rgba(91, 192, 190, 0.418), 85%, transparent 40%);
+    linear-gradient(90deg, rgba(91, 192, 190, 0.322) 1px, transparent 1px),
+    radial-gradient(ellipse at 100% 0%, rgba(91, 192, 190, 0.281), 100%, transparent 40%);
   background-size:
-    100px 100px,
-    100px 100px,
+    200px 200px,
+    200px 200px,
     100% 100%;
-  mask-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), transparent);
+  mask-image: radial-gradient(ellipse 80% 100% at 100% 0%, black 0%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 100% at 100% 0%, black 0%, transparent 100%);
   pointer-events: none;
   z-index: 0;
 }
