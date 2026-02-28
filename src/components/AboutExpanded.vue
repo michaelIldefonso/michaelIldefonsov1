@@ -1,35 +1,49 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, markRaw } from 'vue'
+import {
+  PsychologyOutlined,
+  SportsEsportsOutlined,
+  SchoolOutlined,
+  MemoryOutlined,
+  NightlightRound,
+} from '@vicons/material'
+import { MusicNote220Regular } from '@vicons/fluent'
 
 const sections = ref([
   {
     id: 1,
     title: 'Machine Learning',
-    text: 'Intelligence Integrated. Self-taught in ML with a focus on practical implementation. My standout project is a Real-time Taglish Meeting Summarizer powered by three distinct AI models, where I handled everything from model inference to UI delivery.',
+    icon: markRaw(PsychologyOutlined),
+    text: 'Intelligence Integrated. Self-taught in ML with a focus on practical implementation. My standout project is a Real-time Taglish Meeting Summarizer powered by three distinct AI models where I handled everything from model inference to UI delivery.',
   },
   {
     id: 2,
     title: 'Music & Guitar',
+    icon: markRaw(MusicNote220Regular),
     text: 'A Diverse Palette. I play guitar and listen to almost everything. My inspiration ranges from the precision of Bach and Mozart to the soul of B.B. King and Albert King. I love the riffs of Led Zeppelin, Black Sabbath, and Pink Floyd along with the modern blues of John Mayer and Eric Clapton. Even Jazz, Pop, and Metal find a place in my rotation because music fuels my creative rhythm.',
   },
   {
     id: 3,
     title: 'Gaming & Anime',
+    icon: markRaw(SportsEsportsOutlined),
     text: 'Strategic Storytelling. I thrive in competitive multiplayer games but I am equally at home in the strategy of PVE classics like Red Alert, StarCraft, and Terraria. I am inspired by the world building in anime and the complex logic behind game design and animation.',
   },
   {
     id: 4,
     title: 'Lifelong Learner',
-    text: "Always Iterating. To me, learning isn't just a requirement; it is a hobby. I am currently deep-diving into the Vue 3 ecosystem and Naive UI by leveraging my strong Vanilla JS and DOM fundamentals to master component-based architecture.",
+    icon: markRaw(SchoolOutlined),
+    text: "Always Iterating. To me, learning isn't just a requirement; it is a hobby. I am currently deep diving into the Vue 3 ecosystem and Naive UI by leveraging my strong Vanilla JS and DOM fundamentals to master component-based architecture.",
   },
   {
     id: 5,
     title: 'Hardware & Tinkering',
-    text: 'Systems-Level Curiosity. Hands-on with hardware projects from component-level laptop repairs to building IoT solutions with Arduino. This under-the-hood perspective drives my approach to debugging and software optimization.',
+    icon: markRaw(MemoryOutlined),
+    text: 'Systems Level Curiosity. I enjoy getting under the hood from hardware troubleshooting and component upgrades like RAM and SSDs to clean OS deployments and optimization. This hands on experience with the physical layer informs my approach to software ensuring I write code that respects the hardware it runs on.',
   },
   {
     id: 6,
     title: 'Night Owl & Deep Focus',
+    icon: markRaw(NightlightRound),
     text: 'Peak Performance. I do my best work when the world is quiet. I leverage late nights and ambient soundscapes to enter a state of deep focus. That is when complex backend bugs get solved and polished UI comes to life.',
   },
 ])
@@ -37,17 +51,17 @@ const sections = ref([
 
 <template>
   <div class="about-expanded">
-    <transition-group name="stagger" tag="div" appear class="cards-grid">
-      <n-card
-        v-for="(section, index) in sections"
-        :key="section.id"
-        :title="section.title"
-        :style="{ '--delay': index * 0.15 + 's' }"
-        class="card"
-      >
+    <div class="cards-grid">
+      <n-card v-for="section in sections" :key="section.id" class="card">
+        <div class="card-header">
+          <NIcon size="24" style="margin-right: 0.5rem; flex-shrink: 0">
+            <component :is="section.icon" />
+          </NIcon>
+          <span>{{ section.title }}</span>
+        </div>
         <n-text>{{ section.text }}</n-text>
       </n-card>
-    </transition-group>
+    </div>
   </div>
 </template>
 
@@ -63,6 +77,12 @@ const sections = ref([
   transition: all 0.3s ease;
   border-left: 3px solid var(--accent) !important;
   border-radius: 8px !important;
+  background-color: var(--bg-surface);
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 .card:hover {
@@ -89,9 +109,10 @@ const sections = ref([
     opacity: 0;
     transform: translateY(20px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 </style>

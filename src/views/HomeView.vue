@@ -15,7 +15,6 @@ import FooterSection from '@/components/FooterSection.vue'
       <main>
         <n-space vertical>
           <HeroSection />
-          <n-divider />
 
           <AboutSection />
           <n-divider />
