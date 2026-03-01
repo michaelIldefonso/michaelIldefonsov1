@@ -93,6 +93,9 @@ const sections = ref([
   font-size: 0.85rem;
   letter-spacing: 2px;
   margin-bottom: 8px;
+  border-top: 1px solid rgba(91, 192, 190, 0.15);
+  padding-top: 2rem;
+  margin-top: 2rem;
 }
 
 .card:hover {
@@ -108,10 +111,6 @@ const sections = ref([
 }
 :deep(.n-card-header) {
   padding-bottom: 4px !important;
-}
-.stagger-enter-active {
-  animation: slideIn 0.6s ease-out;
-  animation-delay: var(--delay);
 }
 
 @keyframes slideIn {

@@ -84,7 +84,7 @@ const isExpanded = ref(false)
   color: var(--accent);
   font-size: 0.85rem;
   letter-spacing: 2px;
-  margin-bottom: 5rem;
+  margin-bottom: 2.5rem;
 }
 .expand-btn:hover {
   transform: scale(1.02);
@@ -120,10 +120,10 @@ const isExpanded = ref(false)
 :deep(.expand-btn svg.rotated) {
   transform: rotate(180deg);
 }
-.about-header h2 {
-  font-size: 2.5rem !important; /* Bumped up slightly for better weight */
+:deep(.about-header .n-h2) {
+  font-size: 2.5rem !important;
   font-weight: 700 !important;
-  margin-bottom: 0 !important; /* Removed to keep vertical centering perfect */
+  margin-bottom: 0 !important;
 }
 
 /* Responsive: Hide the line when the layout stacks on mobile */
