@@ -1,5 +1,5 @@
 <script setup>
-import { h, ref } from 'vue'
+import { h, ref, onMounted, onUnmounted } from 'vue'
 import { NIcon } from 'naive-ui'
 import {
   LogoGithub,
@@ -10,22 +10,51 @@ import {
   MailOutline,
 } from '@vicons/ionicons5'
 
-// Helper function to render Naive UI icons properly
 function renderIcon(icon) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
-const activeSection = ref('about')
+
+const activeSection = ref('hero')
 const menuOptions = [
   { key: 'about', label: '', icon: renderIcon(PersonOutline) },
   { key: 'skills', label: '', icon: renderIcon(LayersOutline) },
   { key: 'projects', label: '', icon: renderIcon(CodeSlashOutline) },
   { key: 'contact', label: '', icon: renderIcon(MailOutline) },
 ]
+
 const scrollToSection = (sectionKey) => {
-  activeSection.value = sectionKey
   const element = document.getElementById(sectionKey)
   element?.scrollIntoView({ behavior: 'smooth' })
 }
+
+const updateActiveSection = () => {
+  // Check if we're at the top of the page (hero section)
+  if (window.scrollY < 100) {
+    activeSection.value = null
+    return
+  }
+
+  const sections = menuOptions.map((opt) => opt.key)
+
+  for (const section of sections) {
+    const element = document.getElementById(section)
+    if (element) {
+      const rect = element.getBoundingClientRect()
+      if (rect.top <= 150 && rect.bottom > 0) {
+        activeSection.value = section
+        break
+      }
+    }
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', updateActiveSection)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateActiveSection)
+})
 </script>
 
 <template>

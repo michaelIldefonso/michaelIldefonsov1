@@ -1,64 +1,52 @@
 <script setup>
 import { ref, markRaw } from 'vue'
-import {
-  PsychologyOutlined,
-  SportsEsportsOutlined,
-  SchoolOutlined,
-  MemoryOutlined,
-  NightlightRound,
-} from '@vicons/material'
+import { SportsEsportsOutlined, SchoolOutlined, NightlightRound } from '@vicons/material'
 import { MusicNote220Regular } from '@vicons/fluent'
 
 const sections = ref([
   {
     id: 1,
-    title: 'Machine Learning',
-    icon: markRaw(PsychologyOutlined),
-    text: 'Intelligence Integrated. Self-taught in ML with a focus on practical implementation. My standout project is a Real-time Taglish Meeting Summarizer powered by three distinct AI models where I handled everything from model inference to UI delivery.',
+    title: 'Music & Guitar',
+    icon: markRaw(MusicNote220Regular),
+    subtitle: 'A Diverse Palette',
+    text: "I'm a guitarist inspired by everything from the precision of Bach to the soulful blues of B.B. King and John Mayer. Whether it's Jazz, Metal, or Classic Rock, music fuels my creative rhythm and keeps my perspective fresh.",
   },
   {
     id: 2,
-    title: 'Music & Guitar',
-    icon: markRaw(MusicNote220Regular),
-    text: 'A Diverse Palette. I play guitar and listen to almost everything. My inspiration ranges from the precision of Bach and Mozart to the soul of B.B. King and Albert King. I love the riffs of Led Zeppelin, Black Sabbath, and Pink Floyd along with the modern blues of John Mayer and Eric Clapton. Even Jazz, Pop, and Metal find a place in my rotation because music fuels my creative rhythm.',
+    title: 'Gaming & Anime',
+    icon: markRaw(SportsEsportsOutlined),
+    subtitle: 'Strategic Storytelling',
+    text: "I thrive on the strategy of classics like StarCraft and Red Alert, balanced with the immersive world-building found in anime. I'm constantly fascinated by the complex logic and animation systems that bring these digital worlds to life.",
   },
   {
     id: 3,
-    title: 'Gaming & Anime',
-    icon: markRaw(SportsEsportsOutlined),
-    text: 'Strategic Storytelling. I thrive in competitive multiplayer games but I am equally at home in the strategy of PVE classics like Red Alert, StarCraft, and Terraria. I am inspired by the world building in anime and the complex logic behind game design and animation.',
+    title: 'Lifelong Learner',
+    icon: markRaw(SchoolOutlined),
+    subtitle: 'Always Iterating',
+    text: "To me, learning isn't a requirement; it's a hobby. I enjoy deconstructing modern frameworks back to their DOM fundamentals to truly understand how component-based architecture works under the hood.",
   },
   {
     id: 4,
-    title: 'Lifelong Learner',
-    icon: markRaw(SchoolOutlined),
-    text: "Always Iterating. To me, learning isn't just a requirement; it is a hobby. I am currently deep diving into the Vue 3 ecosystem and Naive UI by leveraging my strong Vanilla JS and DOM fundamentals to master component-based architecture.",
-  },
-  {
-    id: 5,
-    title: 'Hardware & Tinkering',
-    icon: markRaw(MemoryOutlined),
-    text: 'Systems Level Curiosity. I enjoy getting under the hood from hardware troubleshooting and component upgrades like RAM and SSDs to clean OS deployments and optimization. This hands on experience with the physical layer informs my approach to software ensuring I write code that respects the hardware it runs on.',
-  },
-  {
-    id: 6,
     title: 'Night Owl & Deep Focus',
     icon: markRaw(NightlightRound),
-    text: 'Peak Performance. I do my best work when the world is quiet. I leverage late nights and ambient soundscapes to enter a state of deep focus. That is when complex backend bugs get solved and polished UI comes to life.',
+    subtitle: 'Peak Performance',
+    text: "I do my best work when the world is quiet. Using late nights and ambient soundscapes to enter a flow state, I find that's when complex backend bugs finally meet their match and polished UIs come to life.",
   },
 ])
 </script>
 
 <template>
   <div class="about-expanded">
+    <n-p class="section-label">// More about me</n-p>
     <div class="cards-grid">
       <n-card v-for="section in sections" :key="section.id" class="card">
         <div class="card-header">
-          <NIcon size="24" style="margin-right: 0.5rem; flex-shrink: 0">
+          <NIcon size="24" class="icon-teal" style="margin-right: 0.5rem; flex-shrink: 0">
             <component :is="section.icon" />
           </NIcon>
-          <span>{{ section.title }}</span>
+          <span class="title-bold">{{ section.title }}</span>
         </div>
+        <div class="subtitle-accent">{{ section.subtitle }}</div>
         <n-text>{{ section.text }}</n-text>
       </n-card>
     </div>
@@ -72,7 +60,23 @@ const sections = ref([
   gap: 1rem;
   margin: 1rem 0;
 }
+.icon-teal {
+  color: var(--accent) !important;
+}
 
+.icon-teal :deep(svg) {
+  color: var(--accent) !important;
+}
+.title-bold {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.subtitle-accent {
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
 .card {
   transition: all 0.3s ease;
   border-left: 3px solid var(--accent) !important;
@@ -83,6 +87,12 @@ const sections = ref([
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;
+}
+.section-label {
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
 }
 
 .card:hover {

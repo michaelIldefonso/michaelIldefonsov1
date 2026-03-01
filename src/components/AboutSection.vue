@@ -8,24 +8,24 @@ const isExpanded = ref(false)
 
 <template>
   <section class="about-section" id="about">
-    <div class="about-header">
-      <n-p class="section-label">// get to know me</n-p>
-
-      <n-h2>About Me</n-h2>
-    </div>
-
-    <n-space vertical :size="16">
+    <n-p class="section-label">// get to know me</n-p>
+    <div class="about-me">
+      <div class="about-header">
+        <n-h2>About Me</n-h2>
+      </div>
+      <div class="vertical-divider"></div>
       <div class="about-intro">
         <n-text>
-          I am a final year Computer Science student and Full Stack Developer building at the
-          intersection of Backend Architecture and Modern Frontend Engineering. I don’t just write
-          code; I build practical solutions like a Real time Taglish AI Summarizer that bridges
-          complex model inference with a polished user experience. I am currently leveraging my deep
-          Vanilla JS fundamentals to master the Vue 3 ecosystem to build data driven applications
-          that are as performant as they are accessible.
+          I am a <b>final year Computer Science student</b> and <b>Full Stack Developer</b> building
+          at the intersection of Backend Architecture and Modern Frontend Engineering. I don’t just
+          write code; I build practical solutions like a Real time Taglish AI Summarizer that
+          bridges complex model inference with a polished user experience. I am currently leveraging
+          my <b>Vanilla JS fundamentals</b> to master the <b>Vue 3 ecosystem</b> to build data
+          driven applications that are as performant as they are accessible.
         </n-text>
       </div>
-
+    </div>
+    <n-space vertical :size="16">
       <transition name="expand">
         <div v-if="isExpanded" class="about-expanded">
           <AboutExpanded />
@@ -40,7 +40,11 @@ const isExpanded = ref(false)
       >
         {{ isExpanded ? 'Show Less' : 'Read More' }}
         <template #icon>
-          <ChevronDoubleDown20Filled :size="18" :class="{ rotated: isExpanded }" />
+          <ChevronDoubleDown20Filled
+            :size="18"
+            :class="{ rotated: isExpanded }"
+            style="margin-left: 8px"
+          />
         </template>
       </n-button>
     </n-space>
@@ -53,14 +57,34 @@ const isExpanded = ref(false)
   font-size: 1.05rem;
   line-height: 1.8;
 }
+.about-me {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .expand-btn {
   transition: all 0.3s ease;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
 }
+.vertical-divider {
+  width: 1px;
+  height: 80px; /* Adjust this to match the height of your text */
+  background-color: rgba(20, 184, 166, 0.2); /* This is the teal color at 20% opacity */
+  margin: 0 2rem; /* Replaces 'mx-4' - gives space on left and right */
+  align-self: center;
+  background: linear-gradient(to bottom, transparent, rgba(20, 184, 166, 0.4), transparent);
+}
+
 .section-label {
   color: var(--accent);
   font-size: 0.85rem;
   letter-spacing: 2px;
-  margin-bottom: 8px;
+  margin-bottom: 5rem;
 }
 .expand-btn:hover {
   transform: scale(1.02);
@@ -86,6 +110,7 @@ const isExpanded = ref(false)
 
 .about-expanded {
   overflow: hidden;
+  margin-top: 2rem;
 }
 
 :deep(.expand-btn svg) {
@@ -96,8 +121,21 @@ const isExpanded = ref(false)
   transform: rotate(180deg);
 }
 .about-header h2 {
-  font-size: 2rem !important;
+  font-size: 2.5rem !important; /* Bumped up slightly for better weight */
   font-weight: 700 !important;
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 0 !important; /* Removed to keep vertical centering perfect */
+}
+
+/* Responsive: Hide the line when the layout stacks on mobile */
+@media (max-width: 768px) {
+  .about-me {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .vertical-divider {
+    display: none;
+  }
 }
 </style>
