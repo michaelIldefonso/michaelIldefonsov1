@@ -109,7 +109,7 @@ const projects = [
 .section-title {
   font-size: 2.5rem;
   margin-bottom: 2.5rem;
-  color: #fff;
+  color: var(--text);
 }
 .projects-grid {
   display: grid;

@@ -1,5 +1,7 @@
 <script setup>
 import { reactive } from 'vue'
+import { NFormItem, NInput, NButton, NSpace } from 'naive-ui'
+
 const form = reactive({
   name: '',
   email: '',
@@ -15,20 +17,151 @@ function sendEmail() {
 </script>
 
 <template>
-  <section id="contact" class="section-contact">
-    <h2>Get in Touch</h2>
-    <p>If you would like to get in touch, please reach out via email or connect on LinkedIn.</p>
-    <form @submit.prevent="sendEmail">
-      <input type="text" placeholder="Your Name" v-model="form.name" />
-      <input type="email" placeholder="Your Email" v-model="form.email" />
-      <textarea placeholder="Your Message" v-model="form.message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  <section id="contact" class="section section-contact">
+    <n-p class="section-label">// get in touch</n-p>
+    <h2 class="section-title">Contact Me</h2>
+    <p class="section-description">
+      Have a project in mind or just want to connect? Feel free to reach out.
+    </p>
 
-    <div class="footer-social">
-      <a href="mailto:michaelildefonso20@gmail.com">michaelildefonso20@gmail.com</a>
-      <a href="https://www.linkedin.com/in/michael-ildefonso">LinkedIn</a>
-      <a href="https://github.com/michaelildefonso">GitHub</a>
+    <div class="contact-wrapper">
+      <form class="contact-form" @submit.prevent="sendEmail">
+        <n-form-item label="Name" :show-feedback="false">
+          <n-input
+            v-model:value="form.name"
+            placeholder="Your Name"
+            :input-props="{ autocomplete: 'name' }"
+          />
+        </n-form-item>
+        <n-form-item label="Email" :show-feedback="false">
+          <n-input
+            v-model:value="form.email"
+            type="text"
+            placeholder="your@email.com"
+            :input-props="{ autocomplete: 'email' }"
+          />
+        </n-form-item>
+        <n-form-item label="Message" :show-feedback="false">
+          <n-input
+            v-model:value="form.message"
+            type="textarea"
+            placeholder="What's on your mind?"
+            :autosize="{ minRows: 4, maxRows: 8 }"
+          />
+        </n-form-item>
+        <n-button type="primary" size="large" attr-type="submit" class="submit-btn">
+          Send Message
+        </n-button>
+      </form>
+
+      <div class="contact-links">
+        <p class="links-label">Or reach me directly</p>
+        <n-space vertical :size="12">
+          <n-button text tag="a" href="mailto:michaelildefonso20@gmail.com" class="contact-link">
+            michaelildefonso20@gmail.com
+          </n-button>
+          <n-button
+            text
+            tag="a"
+            href="https://www.linkedin.com/in/michael-ildefonso"
+            target="_blank"
+            class="contact-link"
+          >
+            LinkedIn
+          </n-button>
+          <n-button
+            text
+            tag="a"
+            href="https://github.com/michaelildefonso"
+            target="_blank"
+            class="contact-link"
+          >
+            GitHub
+          </n-button>
+        </n-space>
+      </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.section-contact {
+  min-height: 85vh;
+  padding: 4rem 0;
+}
+
+.section-label {
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.section-description {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  max-width: 55ch;
+}
+
+.contact-wrapper {
+  display: flex;
+  gap: 5rem;
+  align-items: flex-start;
+  max-width: 900px;
+}
+
+.contact-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.submit-btn {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 8px;
+}
+
+.links-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.contact-link {
+  color: var(--text-muted) !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent) !important;
+}
+
+@media (max-width: 768px) {
+  .contact-wrapper {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+}
+</style>

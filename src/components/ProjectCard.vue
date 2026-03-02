@@ -9,18 +9,18 @@ defineProps({
   liveUrl: Array,
 })
 
-// This satisfies the Naive UI prop validation while using your CSS variables
+// Correct Object for Naive UI Tags using your palette
 const tagConfig = {
-  color: 'rgba(91, 192, 190, 0.1)', // Your --accent with alpha
-  textColor: 'var(--accent)', // Direct use of your CSS variable
-  borderColor: 'rgba(91, 192, 190, 0.3)',
+  color: 'rgba(91, 192, 190, 0.1)', // --accent with transparency
+  textColor: 'var(--accent)', // #5bc0be
+  borderColor: 'rgba(91, 192, 190, 0.2)',
 }
 </script>
 
 <template>
   <n-card :title="title" hoverable class="project-card">
     <div class="card-content">
-      <n-text depth="3" class="description">
+      <n-text class="description">
         {{ description }}
       </n-text>
 
@@ -32,7 +32,6 @@ const tagConfig = {
           :bordered="false"
           round
           :color="tagConfig"
-          class="tech-tag"
         >
           {{ tech }}
         </n-tag>
@@ -40,7 +39,7 @@ const tagConfig = {
 
       <div class="links-footer">
         <div v-if="githubUrl?.length" class="link-row">
-          <n-text depth="3" class="link-label">Source</n-text>
+          <span class="link-label">Source</span>
           <n-space :size="12">
             <n-button
               v-for="link in githubUrl"
@@ -49,7 +48,6 @@ const tagConfig = {
               tag="a"
               :href="link.url"
               target="_blank"
-              type="info"
               class="footer-btn"
             >
               {{ link.label }}
@@ -58,7 +56,7 @@ const tagConfig = {
         </div>
 
         <div v-if="liveUrl?.length" class="link-row">
-          <n-text depth="3" class="link-label">Live</n-text>
+          <span class="link-label">Live</span>
           <n-space :size="12">
             <n-button
               v-for="link in liveUrl"
@@ -67,8 +65,7 @@ const tagConfig = {
               tag="a"
               :href="link.url"
               target="_blank"
-              type="success"
-              class="footer-btn"
+              class="footer-btn accent-btn"
             >
               {{ link.label }}
             </n-button>
@@ -82,8 +79,7 @@ const tagConfig = {
 <style scoped>
 .project-card {
   height: 100%;
-  background-color: rgba(24, 24, 28, 0.8);
-  /* Use your bg-surface variable if defined globally */
+  background-color: var(--bg-surface);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -92,15 +88,6 @@ const tagConfig = {
   margin-bottom: 20px;
   line-height: 1.6;
   color: var(--text-muted);
-}
-
-.tech-tags {
-  margin-bottom: 24px;
-}
-
-/* We removed the !important because the :color prop handles it now */
-.tech-tag {
-  font-weight: 500;
 }
 
 .links-footer {
@@ -124,14 +111,25 @@ const tagConfig = {
   letter-spacing: 1px;
   min-width: 60px;
   color: var(--text-muted);
+  font-weight: 700;
 }
 
 .footer-btn {
+  color: var(--text-muted);
   font-weight: 600;
   transition: color 0.2s ease;
 }
 
 .footer-btn:hover {
-  color: var(--accent) !important;
+  color: var(--accent-hover) !important;
+}
+
+/* Highlight the 'Live' buttons slightly more with your accent */
+.accent-btn {
+  color: var(--accent);
+}
+
+.accent-btn:hover {
+  color: var(--accent-hover) !important;
 }
 </style>

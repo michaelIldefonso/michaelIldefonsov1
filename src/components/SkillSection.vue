@@ -21,7 +21,7 @@ import {
         <n-card embedded :bordered="false" class="skill-card">
           <template #header>
             <n-space align="center" :size="8">
-              <n-icon :size="20" color="#58ead4"><CodeOutlined /></n-icon>
+              <n-icon :size="20" :color="'var(--accent)'"><CodeOutlined /></n-icon>
               <span>Languages & Runtimes</span>
             </n-space>
           </template>
@@ -36,7 +36,7 @@ import {
         <n-card embedded :bordered="false" class="skill-card">
           <template #header>
             <n-space align="center" :size="8">
-              <n-icon :size="20" color="#58ead4"><RocketOutlined /></n-icon>
+              <n-icon :size="20" :color="'var(--accent)'"><RocketOutlined /></n-icon>
               <span>Frameworks</span>
             </n-space>
           </template>
@@ -50,7 +50,7 @@ import {
         <n-card embedded :bordered="false" class="skill-card">
           <template #header>
             <n-space align="center" :size="8">
-              <n-icon :size="20" color="#58ead4"><BuildOutlined /></n-icon>
+              <n-icon :size="20" :color="'var(--accent)'"><BuildOutlined /></n-icon>
               <span>DevOps & Delivery</span>
             </n-space>
           </template>
@@ -65,7 +65,7 @@ import {
         <n-card embedded :bordered="false" class="skill-card exposure-card">
           <template #header>
             <n-space align="center" :size="8">
-              <n-icon :size="20" color="#999"><EyeOutlined /></n-icon>
+              <n-icon :size="20" :color="'var(--text-muted)'"><EyeOutlined /></n-icon>
               <span>Exposure & Prior Use</span>
             </n-space>
           </template>
@@ -84,7 +84,7 @@ import {
       <div class="skills-group">
         <h3 class="group-label">
           <n-space align="center" :size="8">
-            <n-icon :size="18" color="#18a058"><ThunderboltOutlined /></n-icon>
+            <n-icon :size="18" :color="'var(--accent)'"><ThunderboltOutlined /></n-icon>
             <span>AI / Machine Learning</span>
           </n-space>
         </h3>
@@ -100,12 +100,12 @@ import {
       <div class="skills-group">
         <h3 class="group-label">
           <n-space align="center" :size="8">
-            <n-icon :size="18" color="#2080f0"><GlobalOutlined /></n-icon>
+            <n-icon :size="18" :color="'var(--accent)'"><GlobalOutlined /></n-icon>
             <span>Network & Cloud</span>
           </n-space>
         </h3>
         <n-space wrap>
-          <n-tag color="#2080f0" ghost>DNS: ildf.site</n-tag>
+          <n-tag ghost>DNS: ildf.site</n-tag>
           <n-tag ghost>Cloudflare R2</n-tag>
           <n-tag ghost>Modal</n-tag>
           <n-tag ghost>CORS Management</n-tag>
@@ -115,7 +115,7 @@ import {
       <div class="skills-group">
         <h3 class="group-label">
           <n-space align="center" :size="8">
-            <n-icon :size="18" color="#f0a020"><LockOutlined /></n-icon>
+            <n-icon :size="18" :color="'var(--accent)'"><LockOutlined /></n-icon>
             <span>Auth & Persistence</span>
           </n-space>
         </h3>
@@ -134,15 +134,15 @@ import {
   padding: 2rem 0;
 }
 .section-title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #fff;
+  color: var(--text);
 }
 .group-label {
   font-size: 1.1rem;
   margin-bottom: 1.25rem;
   opacity: 0.9;
-  color: #fff;
+  color: var(--text);
 }
 
 .skills-cards {
