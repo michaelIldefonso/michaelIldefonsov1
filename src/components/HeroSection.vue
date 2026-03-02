@@ -15,12 +15,7 @@ const title = 'Full-Stack Developer'
       <n-text class="tagline">Hey, I'm</n-text>
       <n-h1 id="name">{{ name }}</n-h1>
       <n-h2 id="title">{{ title }}</n-h2>
-      <n-text id="tagline">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab perspiciatis, natus ipsum, quos
-        saepe harum <br />
-        iste ipsam quibusdam cumque esse error odit corrupti, amet libero vel dignissimos tenetur
-        soluta. Magnam!</n-text
-      >
+      <n-text id="tagline"> Backend-first. Full-stack in progress.</n-text>
     </div>
     <n-space vertical>
       <div class="hero-actions">
@@ -67,8 +62,16 @@ const title = 'Full-Stack Developer'
 }
 
 #tagline {
-  color: var(--text-muted) !important;
+  color: var(--text-primary) !important;
+  font-size: 1.1rem !important;
+  line-height: 1.7 !important;
+  max-width: 70ch !important;
+  font-weight: 400 !important;
+}
+
+.tagline {
   font-size: 1rem !important;
+  color: var(--text-muted) !important;
 }
 
 .hero {

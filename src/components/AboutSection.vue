@@ -1,9 +1,5 @@
 <script setup>
-import { ref } from 'vue'
 import AboutExpanded from './AboutExpanded.vue'
-import { ChevronDoubleDown20Filled } from '@vicons/fluent'
-
-const isExpanded = ref(false)
 </script>
 
 <template>
@@ -17,36 +13,19 @@ const isExpanded = ref(false)
       <div class="about-intro">
         <n-text>
           I am a <b>final year Computer Science student</b> and <b>Full Stack Developer</b> building
-          at the intersection of Backend Architecture and Modern Frontend Engineering. I don’t just
-          write code; I build practical solutions like a Real time Taglish AI Summarizer that
-          bridges complex model inference with a polished user experience. I am currently leveraging
-          my <b>Vanilla JS fundamentals</b> to master the <b>Vue 3 ecosystem</b> to build data
-          driven applications that are as performant as they are accessible.
+          at the intersection of <b>Backend Architecture</b> and <b>Modern Frontend Engineering</b>.
+          I don’t just write code; I build practical solutions like a
+          <b>Real-time Taglish AI Summarizer</b> that bridges complex model inference with a
+          polished user experience. I am currently leveraging my <b>Vanilla JS fundamentals</b> to
+          master the <b>Vue 3 ecosystem</b> to build data driven applications that are as performant
+          as they are accessible.
         </n-text>
       </div>
     </div>
     <n-space vertical :size="16">
-      <transition name="expand">
-        <div v-if="isExpanded" class="about-expanded">
-          <AboutExpanded />
-        </div>
-      </transition>
-
-      <n-button
-        type="primary"
-        @click="isExpanded = !isExpanded"
-        :icon-placement="'right'"
-        class="expand-btn"
-      >
-        {{ isExpanded ? 'Show Less' : 'Read More' }}
-        <template #icon>
-          <ChevronDoubleDown20Filled
-            :size="18"
-            :class="{ rotated: isExpanded }"
-            style="margin-left: 8px"
-          />
-        </template>
-      </n-button>
+      <div class="about-expanded">
+        <AboutExpanded />
+      </div>
     </n-space>
   </section>
 </template>
@@ -64,13 +43,11 @@ const isExpanded = ref(false)
   max-width: 1200px;
   margin: 0 auto;
 }
-.expand-btn {
-  transition: all 0.3s ease;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2rem;
+b {
+  color: var(--accent);
+  font-weight: 600;
 }
+
 .vertical-divider {
   width: 1px;
   height: 80px; /* Adjust this to match the height of your text */
