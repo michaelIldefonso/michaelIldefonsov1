@@ -92,3 +92,11 @@ npm run lint
 ```
 
 Runs ESLint to check code quality and maintain standards.
+
+## Deployment
+
+This portfolio is deployed on **Vercel** and is live at:
+
+🌐 **[michaelildefonso.ildf.site](https://michaelildefonso.ildf.site)**
+
+The production build is automatically deployed whenever changes are pushed to the main branch.
