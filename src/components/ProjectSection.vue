@@ -72,9 +72,9 @@ const projects = [
 </script>
 
 <template>
-  <section id="projects" class="section-projects">
-    <n-p class="section-label">// what I've built</n-p>
+  <n-p class="section-label">// what I've built</n-p>
 
+  <section id="projects" class="section-projects">
     <h2 class="section-title">Featured Projects</h2>
 
     <div class="projects-grid">

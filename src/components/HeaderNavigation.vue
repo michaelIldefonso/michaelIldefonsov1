@@ -83,7 +83,13 @@ onUnmounted(() => {
             <NIcon><LogoGithub /></NIcon>
           </template>
         </n-button>
-        <n-button tag="a" href="https://linkedin.com/in/..." target="_blank" circle size="medium">
+        <n-button
+          tag="a"
+          href="https://www.linkedin.com/in/michael-ildefonso-62ba77267"
+          target="_blank"
+          circle
+          size="medium"
+        >
           <template #icon>
             <NIcon><LogoLinkedin /></NIcon>
           </template>

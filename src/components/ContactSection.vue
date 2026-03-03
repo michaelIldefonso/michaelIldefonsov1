@@ -17,8 +17,9 @@ function sendEmail() {
 </script>
 
 <template>
+  <n-p class="section-label">// get in touch</n-p>
+
   <section id="contact" class="section section-contact">
-    <n-p class="section-label">// get in touch</n-p>
     <h2 class="section-title">Contact Me</h2>
     <p class="section-description">
       Have a project in mind or just want to connect? Feel free to reach out.
@@ -63,7 +64,7 @@ function sendEmail() {
           <n-button
             text
             tag="a"
-            href="https://www.linkedin.com/in/michael-ildefonso"
+            href="https://www.linkedin.com/in/michael-ildefonso-62ba77267"
             target="_blank"
             class="contact-link"
           >
