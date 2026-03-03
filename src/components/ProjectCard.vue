@@ -81,6 +81,12 @@ const tagConfig = {
   height: 100%;
   background-color: var(--bg-surface);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: rgba(91, 192, 190, 0.3);
+  box-shadow: 0 8px 24px rgba(91, 192, 190, 0.1);
 }
 
 .description {
@@ -88,6 +94,11 @@ const tagConfig = {
   margin-bottom: 20px;
   line-height: 1.6;
   color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.tech-tags {
+  margin-bottom: 16px;
 }
 
 .links-footer {
@@ -131,5 +142,63 @@ const tagConfig = {
 
 .accent-btn:hover {
   color: var(--accent-hover) !important;
+}
+
+@media (max-width: 1024px) {
+  .project-card {
+    padding: 1.25rem;
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    margin: 0;
+    padding: 1rem;
+  }
+  .description {
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+  .link-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .link-label {
+    font-size: 10px;
+  }
+  .footer-btn {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-card {
+    margin: 0;
+    padding: 0.875rem;
+  }
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+  .tech-tags {
+    margin-bottom: 12px;
+  }
+  .links-footer {
+    gap: 10px;
+    padding-top: 12px;
+  }
+  .link-row {
+    gap: 6px;
+  }
+  .link-label {
+    font-size: 9px;
+    min-width: 50px;
+  }
+  .footer-btn {
+    font-size: 0.85rem;
+  }
 }
 </style>

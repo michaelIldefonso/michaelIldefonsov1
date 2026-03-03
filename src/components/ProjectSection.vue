@@ -73,6 +73,8 @@ const projects = [
 
 <template>
   <section id="projects" class="section-projects">
+    <n-p class="section-label">// what I've built</n-p>
+
     <h2 class="section-title">Featured Projects</h2>
 
     <div class="projects-grid">
@@ -104,17 +106,21 @@ const projects = [
 
 <style scoped>
 .section-projects {
-  padding: 4rem 0;
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 .section-title {
   font-size: 2.5rem;
   margin-bottom: 2.5rem;
   color: var(--text);
+  text-align: center;
 }
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+  width: 100%;
 }
 .view-more-container {
   margin-top: 4rem;
@@ -139,5 +145,11 @@ const projects = [
 .github-cta:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 15px rgba(66, 184, 131, 0.2);
+}
+.section-label {
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 2.5rem;
 }
 </style>

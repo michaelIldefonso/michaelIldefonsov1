@@ -87,7 +87,9 @@ function sendEmail() {
 <style scoped>
 .section-contact {
   min-height: 85vh;
-  padding: 4rem 0;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .section-label {
@@ -129,6 +131,11 @@ function sendEmail() {
 .submit-btn {
   align-self: flex-start;
   margin-top: 8px;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
 }
 
 .contact-links {
@@ -158,10 +165,69 @@ function sendEmail() {
   color: var(--accent) !important;
 }
 
+@media (max-width: 1024px) {
+  .section-contact {
+    min-height: auto;
+    padding: 3rem 2rem;
+  }
+  .contact-wrapper {
+    gap: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .section-contact {
+    min-height: auto;
+    padding: 2.5rem 1.5rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .section-description {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
   .contact-wrapper {
     flex-direction: column;
     gap: 2.5rem;
+    max-width: 100%;
+  }
+  .contact-form {
+    width: 100%;
+  }
+  .contact-links {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-contact {
+    min-height: auto;
+    padding: 2rem 1rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .section-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .contact-wrapper {
+    gap: 1.5rem;
+  }
+  .contact-form {
+    gap: 16px;
+  }
+  .contact-links {
+    gap: 0.75rem;
+  }
+  .links-label {
+    font-size: 0.75rem;
+  }
+  .contact-link {
+    font-size: 0.9rem;
   }
 }
 </style>

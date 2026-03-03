@@ -7,7 +7,7 @@ import AboutExpanded from './AboutExpanded.vue'
     <n-p class="section-label">// get to know me</n-p>
     <div class="about-me">
       <div class="about-header">
-        <n-h2>About Me</n-h2>
+        <n-h2 class="about">About Me</n-h2>
       </div>
       <div class="vertical-divider"></div>
       <div class="about-intro">
@@ -35,6 +35,7 @@ import AboutExpanded from './AboutExpanded.vue'
   max-width: 80ch;
   font-size: 1.05rem;
   line-height: 1.8;
+  text-indent: 3ch;
 }
 .about-me {
   display: flex;
@@ -105,14 +106,28 @@ b {
 
 /* Responsive: Hide the line when the layout stacks on mobile */
 @media (max-width: 768px) {
+  .section-label {
+    margin-left: 1rem;
+  }
   .about-me {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    margin: 1rem;
     gap: 1.5rem;
   }
 
   .vertical-divider {
     display: none;
   }
+  .about-intro {
+    text-indent: 3ch;
+    margin: 1rem;
+  }
+  .about-expanded {
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
 }
 </style>

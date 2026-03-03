@@ -13,6 +13,8 @@ import {
 
 <template>
   <section id="skills" class="section skills">
+    <n-p class="section-label">// what I'm good at</n-p>
+
     <h2 class="section-title">Technical Proficiency</h2>
 
     <div class="skills-group">
@@ -156,6 +158,7 @@ import {
   transition: all 0.3s ease;
   background: rgba(255, 255, 255, 0.03);
   height: 100%;
+  margin: 0;
 }
 
 .skill-card:hover {
@@ -178,8 +181,70 @@ import {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 32px;
 }
-
+.section-label {
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-bottom: 2.5rem;
+}
 .skills-group {
   margin-bottom: 24px;
+}
+
+@media (max-width: 1200px) {
+  .skills-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .skills {
+    padding: 2rem 1rem;
+  }
+  .skills-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .skills-grid-bottom {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .group-label {
+    font-size: 1rem;
+  }
+  .skill-card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills {
+    padding: 1.5rem 1rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .group-label {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+  .skills-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .skill-card {
+    padding: 0.75rem;
+  }
+  .skills-grid-bottom {
+    gap: 16px;
+  }
 }
 </style>

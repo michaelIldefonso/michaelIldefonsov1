@@ -155,4 +155,11 @@ onUnmounted(() => {
 .sidebar-socials {
   padding-bottom: 24px;
 }
+
+/*Hide navbar when screen is smaller than 768px (mobile view) */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
 </style>
