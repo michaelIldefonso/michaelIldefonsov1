@@ -119,7 +119,6 @@ const scrollToSection = (e, sectionId) => {
   flex-direction: column;
   padding: 0 80px;
   position: relative;
-  overflow: hidden;
 }
 
 .hero-social {
@@ -131,6 +130,8 @@ const scrollToSection = (e, sectionId) => {
   flex-direction: column;
   gap: 12px;
   margin: 8rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-actions {
