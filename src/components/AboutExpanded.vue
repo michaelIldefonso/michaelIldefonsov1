@@ -1,7 +1,10 @@
 <script setup>
 import { ref, markRaw } from 'vue'
+import { useScrollReveal } from '@/composables/useScrollReveal'
 import { SportsEsportsOutlined, SchoolOutlined, NightlightRound } from '@vicons/material'
 import { MusicNote220Regular } from '@vicons/fluent'
+
+const { el: cardsRef, isVisible } = useScrollReveal(0.15)
 
 const sections = ref([
   {
@@ -38,8 +41,14 @@ const sections = ref([
 <template>
   <div class="about-expanded">
     <n-p class="section-label">// More about me</n-p>
-    <div class="cards-grid">
-      <n-card v-for="section in sections" :key="section.id" class="card">
+    <div class="cards-grid" ref="cardsRef">
+      <n-card
+        v-for="(section, index) in sections"
+        :key="section.id"
+        class="card"
+        :class="{ 'is-visible': isVisible }"
+        :style="{ transitionDelay: `${index * 120}ms` }"
+      >
         <div class="card-header">
           <NIcon size="20" class="icon-teal">
             <component :is="section.icon" />
@@ -88,19 +97,25 @@ const sections = ref([
 .card-text {
   font-size: 0.9rem;
   line-height: 1.5;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.card:hover .card-text {
-  opacity: 1;
 }
 
 .card {
-  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
   border: 1px solid rgba(129, 140, 248, 0.2) !important;
   border-radius: 6px !important;
   background-color: transparent !important;
   padding: 1.25rem !important;
+}
+
+.card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card-header {

@@ -85,9 +85,10 @@ const scrollToSection = (e, sectionId) => {
 
 #name {
   font-size: 4rem !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
   margin: 0 !important;
   animation: fadeInUp 0.8s ease-out 0.2s both;
+  letter-spacing: -0.03em;
 }
 
 #title {
