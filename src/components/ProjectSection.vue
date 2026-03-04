@@ -72,9 +72,8 @@ const projects = [
 </script>
 
 <template>
-  <n-p class="section-label">// what I've built</n-p>
-
   <section id="projects" class="section-projects">
+    <n-p class="section-label">// what I've built</n-p>
     <h2 class="section-title">Featured Projects</h2>
 
     <div class="projects-grid">
@@ -151,5 +150,11 @@ const projects = [
   font-size: 0.85rem;
   letter-spacing: 2px;
   margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .section-projects {
+    padding: 4rem 1.5rem;
+  }
 }
 </style>

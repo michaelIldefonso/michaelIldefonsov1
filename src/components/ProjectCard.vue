@@ -11,9 +11,9 @@ defineProps({
 
 // Correct Object for Naive UI Tags using your palette
 const tagConfig = {
-  color: 'rgba(91, 192, 190, 0.1)', // --accent with transparency
-  textColor: 'var(--accent)', // #5bc0be
-  borderColor: 'rgba(91, 192, 190, 0.2)',
+  color: 'rgba(129, 140, 248, 0.1)',
+  textColor: 'var(--accent)',
+  borderColor: 'rgba(129, 140, 248, 0.2)',
 }
 </script>
 
@@ -85,8 +85,8 @@ const tagConfig = {
 }
 
 .project-card:hover {
-  border-color: rgba(91, 192, 190, 0.3);
-  box-shadow: 0 8px 24px rgba(91, 192, 190, 0.1);
+  border-color: rgba(129, 140, 248, 0.35);
+  box-shadow: 0 8px 24px rgba(129, 140, 248, 0.12);
 }
 
 .description {

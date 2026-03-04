@@ -1,6 +1,7 @@
 <template>
   <footer class="footer">
     <n-text class="footer-copy">&copy; 2026 Michael Ildefonso. All rights reserved.</n-text>
+    <n-text class="footer-stack">Built with Vue 3 · Vite · Naive UI</n-text>
   </footer>
 </template>
 
@@ -11,11 +12,21 @@
   padding: 2rem;
   text-align: center;
   margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .footer-copy {
   color: var(--text-muted);
   font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.footer-stack {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  opacity: 0.55;
   letter-spacing: 0.5px;
 }
 

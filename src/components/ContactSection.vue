@@ -17,9 +17,9 @@ function sendEmail() {
 </script>
 
 <template>
-  <n-p class="section-label">// get in touch</n-p>
-
   <section id="contact" class="section section-contact">
+    <n-p class="section-label">// get in touch</n-p>
+
     <h2 class="section-title">Contact Me</h2>
     <p class="section-description">
       Have a project in mind or just want to connect? Feel free to reach out.
@@ -97,7 +97,7 @@ function sendEmail() {
   color: var(--accent);
   font-size: 0.85rem;
   letter-spacing: 2px;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .section-title {

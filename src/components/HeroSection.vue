@@ -14,7 +14,6 @@ const scrollToSection = (e, sectionId) => {
 </script>
 
 <template>
-  <div class="hero-grid"></div>
   <div class="gradient-line"></div>
 
   <!-- grid here -->
@@ -121,6 +120,7 @@ const scrollToSection = (e, sectionId) => {
   position: relative;
   overflow: hidden;
 }
+
 .hero-social {
   display: none;
 }
@@ -152,7 +152,7 @@ const scrollToSection = (e, sectionId) => {
 
 .hero-actions-buttons :deep(button:hover) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(91, 192, 190, 0.2);
+  box-shadow: 0 8px 16px rgba(129, 140, 248, 0.2);
 }
 
 .hero-cv-link {
@@ -186,26 +186,6 @@ const scrollToSection = (e, sectionId) => {
 
 .hero-scroll :deep(button:hover) {
   animation: none;
-}
-
-.hero-grid {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 120%;
-  height: 100%;
-  background-image:
-    linear-gradient(rgba(91, 192, 190, 0.466) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(91, 192, 190, 0.322) 1px, transparent 1px),
-    radial-gradient(ellipse at 100% 0%, rgba(91, 192, 190, 0.281), 100%, transparent 40%);
-  background-size:
-    200px 200px,
-    200px 200px,
-    100% 100%;
-  mask-image: radial-gradient(ellipse 80% 100% at 100% 0%, black 0%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 100% at 100% 0%, black 0%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
 }
 
 @media (max-width: 768px) {

@@ -22,6 +22,7 @@ import AboutExpanded from './AboutExpanded.vue'
         </n-text>
       </div>
     </div>
+    <n-divider></n-divider>
     <n-space vertical :size="16">
       <div class="about-expanded">
         <AboutExpanded />
@@ -31,6 +32,11 @@ import AboutExpanded from './AboutExpanded.vue'
 </template>
 
 <style scoped>
+.about-section {
+  padding: 4rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
 .about-intro {
   max-width: 80ch;
   font-size: 1.05rem;
@@ -102,17 +108,18 @@ b {
   font-size: 2.5rem !important;
   font-weight: 700 !important;
   margin-bottom: 0 !important;
+  white-space: nowrap;
 }
 
 /* Responsive: Hide the line when the layout stacks on mobile */
 @media (max-width: 768px) {
-  .section-label {
-    margin-left: 1rem;
+  .about-section {
+    padding: 4rem 1.5rem;
   }
   .about-me {
     flex-direction: column;
     align-items: center;
-    margin: 1rem;
+    margin: 0;
     gap: 1.5rem;
   }
 
@@ -121,10 +128,10 @@ b {
   }
   .about-intro {
     text-indent: 3ch;
-    margin: 1rem;
+    margin: 0;
   }
   .about-expanded {
-    margin: 1rem;
+    margin: 0;
   }
 }
 

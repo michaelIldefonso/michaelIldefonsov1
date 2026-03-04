@@ -73,6 +73,7 @@ import {
           </template>
           <n-space>
             <n-tag :bordered="false" class="ghost-tag">React Native</n-tag>
+            <n-tag :bordered="false" class="ghost-tag">React</n-tag>
             <n-tag :bordered="false" class="ghost-tag">PHP / Laravel</n-tag>
             <n-tag :bordered="false" class="ghost-tag">MySQL</n-tag>
             <n-tag :bordered="false" class="ghost-tag">ESLint</n-tag>
@@ -133,7 +134,7 @@ import {
 
 <style scoped>
 .skills {
-  padding: 2rem 0;
+  padding: 2rem 2rem;
 }
 .section-title {
   font-size: 2.5rem;
@@ -187,6 +188,9 @@ import {
   letter-spacing: 2px;
   margin-bottom: 2.5rem;
 }
+.section-label-mobile {
+  margin-left: 1rem;
+}
 .skills-group {
   margin-bottom: 24px;
 }
@@ -199,7 +203,7 @@ import {
 
 @media (max-width: 768px) {
   .skills {
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
   }
   .skills-cards {
     grid-template-columns: 1fr;

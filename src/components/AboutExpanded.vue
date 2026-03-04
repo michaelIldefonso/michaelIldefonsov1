@@ -97,7 +97,7 @@ const sections = ref([
 
 .card {
   transition: all 0.3s ease;
-  border: 1px solid rgba(91, 192, 190, 0.2) !important;
+  border: 1px solid rgba(129, 140, 248, 0.2) !important;
   border-radius: 6px !important;
   background-color: transparent !important;
   padding: 1.25rem !important;
@@ -112,17 +112,14 @@ const sections = ref([
 
 .section-label {
   color: var(--accent);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   letter-spacing: 2px;
-  margin-bottom: 1rem;
-  border-top: 1px solid rgba(91, 192, 190, 0.15);
-  padding-top: 1.5rem;
-  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .card:hover {
-  border-color: rgba(91, 192, 190, 0.4) !important;
-  background-color: rgba(91, 192, 190, 0.05) !important;
+  border-color: rgba(129, 140, 248, 0.4) !important;
+  background-color: rgba(129, 140, 248, 0.05) !important;
   transform: translateY(-2px);
 }
 
