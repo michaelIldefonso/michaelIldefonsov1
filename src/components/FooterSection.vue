@@ -1,52 +1,77 @@
 <template>
   <footer class="footer">
-    <n-text class="footer-copy">&copy; 2026 Michael Ildefonso. All rights reserved.</n-text>
-    <n-text class="footer-stack">Built with Vue 3 · Vite · Naive UI</n-text>
+    <div class="footer-inner">
+      <span class="footer-logo">&lt;MI /&gt;</span>
+      <p class="footer-copy">© 2026 Michael Ildefonso · Built with Vue 3 + Vite</p>
+      <div class="footer-links">
+        <a href="https://github.com/michaelIldefonso" target="_blank" class="footer-link">GitHub</a>
+        <a
+          href="https://www.linkedin.com/in/michael-ildefonso-62ba77267"
+          target="_blank"
+          class="footer-link"
+          >LinkedIn</a
+        >
+      </div>
+    </div>
   </footer>
 </template>
 
 <style scoped>
 .footer {
-  background-color: rgba(0, 0, 0, 0.3);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  text-align: center;
-  margin-top: 4rem;
+  padding: 2.5rem 5rem;
+  margin-top: 0;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
 }
 
 .footer-copy {
+  font-size: 0.85rem;
   color: var(--text-muted);
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
-.footer-stack {
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-link {
+  font-size: 0.85rem;
   color: var(--text-muted);
-  font-size: 0.78rem;
-  opacity: 0.55;
-  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: var(--accent);
 }
 
 @media (max-width: 768px) {
   .footer {
-    padding: 1.5rem 1rem;
-    margin-top: 3rem;
+    padding: 2rem 1.5rem;
   }
-  .footer-copy {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer {
-    padding: 1rem;
-    margin-top: 2rem;
-  }
-  .footer-copy {
-    font-size: 0.8rem;
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
   }
 }
 </style>

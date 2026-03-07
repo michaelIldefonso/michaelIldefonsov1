@@ -23,12 +23,7 @@ const themeOverrides = {
 
 <template>
   <n-config-provider :theme="darkTheme" :theme-overrides="themeOverrides">
-    <div class="app-wrapper">
-      <div class="blob blob-1" aria-hidden="true"></div>
-      <div class="blob blob-2" aria-hidden="true"></div>
-      <div class="blob blob-3" aria-hidden="true"></div>
-      <RouterView />
-    </div>
+    <RouterView />
   </n-config-provider>
 </template>
 

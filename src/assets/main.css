@@ -13,34 +13,59 @@
   --border: #1a2540;
   --border-strong: #2d3f66;
 
-  /* Indigo scale */
-  --indigo-deep: #1e1b4b;
-  --indigo-mid: #312e81;
-  --indigo-rose: #4338ca;
-
   /* Accent */
   --accent: #818cf8;
   --accent-hover: #6366f1;
   --accent-glow: #4f46e5;
+
+  /* Skill chips */
+  --chip-accent: #a5b4fc;
+  --chip-info: #90cdf4;
+  --chip-warn: #fcd34d;
+  --chip-primary-bg: rgba(129, 140, 248, 0.12);
+  --chip-primary-border: rgba(129, 140, 248, 0.2);
+  --chip-accent-bg: rgba(129, 140, 248, 0.08);
+  --chip-accent-border: rgba(129, 140, 248, 0.15);
+  --chip-info-bg: rgba(99, 179, 237, 0.08);
+  --chip-info-border: rgba(99, 179, 237, 0.15);
+  --chip-warn-bg: rgba(251, 191, 36, 0.08);
+  --chip-warn-border: rgba(251, 191, 36, 0.15);
+  --chip-ghost-bg: rgba(255, 255, 255, 0.04);
+  --chip-ghost-border: rgba(255, 255, 255, 0.07);
 
   /* Text */
   --text: #cbd5e1;
   --text-secondary: #94a3b8;
   --text-muted: #475569;
   --text-disabled: #1e293b;
+
+  /* Nav height token */
+  --nav-height: 64px;
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: var(--text);
   font-family: var(--font-body);
   background-color: var(--bg-primary);
-  position: relative;
+  background-image:
+    radial-gradient(circle at 14% 22%, rgba(99, 102, 241, 0.16) 0%, transparent 40%),
+    radial-gradient(circle at 86% -8%, rgba(56, 189, 248, 0.13) 0%, transparent 45%),
+    radial-gradient(circle at 58% 118%, rgba(129, 140, 248, 0.11) 0%, transparent 42%),
+    linear-gradient(180deg, #090d17 0%, #070a12 46%, #06080f 100%);
+  background-attachment: scroll;
+  overflow-x: hidden;
 }
 
 h1,
@@ -52,44 +77,97 @@ h6 {
   font-family: var(--font-display);
 }
 
+/* Dot grid background */
 body::before {
   content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse 100% 60% at 65% -5%,
-    rgba(99, 102, 241, 0.18) 0%,
-    rgba(99, 102, 241, 0.06) 10%,
-    transparent 60%
-  );
+  position: fixed;
+  inset: -10% -6%;
+  background:
+    radial-gradient(circle at 18% 32%, rgba(99, 102, 241, 0.2) 0%, transparent 42%),
+    radial-gradient(circle at 78% 24%, rgba(14, 165, 233, 0.16) 0%, transparent 44%),
+    radial-gradient(circle at 62% 76%, rgba(129, 140, 248, 0.11) 0%, transparent 40%);
+  filter: blur(18px);
+  animation: ambientDrift 38s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: 0;
 }
+
 body::after {
   content: '';
   position: fixed;
   inset: 0;
+  background-image:
+    radial-gradient(rgba(129, 140, 248, 0.06) 1px, transparent 1px),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.01) 0px,
+      rgba(255, 255, 255, 0.01) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  background-size:
+    30px 30px,
+    100% 4px;
+  opacity: 0.42;
   pointer-events: none;
-  z-index: 9999;
-  opacity: 0.09; /* subtle — increase to 0.06 if you want it more visible */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
+  z-index: 0;
 }
 
-footer {
-  background-color: var(--bg-darkest);
+@keyframes ambientDrift {
+  from {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(2%, 1.5%, 0) scale(1.06);
+  }
 }
 
-.section {
-  padding: 80px 0;
+@media (max-width: 900px) {
+  body::before {
+    animation: none;
+    filter: blur(16px);
+  }
+
+  body::after {
+    opacity: 0.26;
+  }
 }
 
-.all {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* horizontal center */
-  justify-content: center; /* vertical center */
-  min-height: 100vh; /* optional: full viewport height */
-  text-align: center; /* optional: center text */
+@media (hover: none), (pointer: coarse) {
+  body::before {
+    animation: none;
+    filter: blur(12px);
+    opacity: 0.8;
+  }
+
+  body::after {
+    opacity: 0.2;
+    background-size:
+      38px 38px,
+      100% 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body::before {
+    animation: none;
+    filter: blur(14px);
+  }
+
+  body::after {
+    opacity: 0.2;
+  }
+}
+
+/* Ensure stacking above bg decorations */
+header,
+main,
+footer,
+section {
+  position: relative;
+  z-index: 1;
 }
