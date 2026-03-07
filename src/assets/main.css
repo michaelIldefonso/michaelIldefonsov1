@@ -156,7 +156,7 @@ body::after {
 }
 
 .section-tag::before {
-  content: '$ '; 
+  content: '$ ';
   color: var(--text-muted);
 }
 

@@ -31,7 +31,8 @@ function sendEmail() {
       <span class="section-tag">contact --send</span>
     </div>
     <p class="section-subtitle">
-      Prefer a direct email, social link, or a quick form? Reach out however is easiest — I usually reply within a day.
+      Prefer a direct email, social link, or a quick form? Reach out however is easiest — I usually
+      reply within a day.
     </p>
 
     <div class="contact-inner">

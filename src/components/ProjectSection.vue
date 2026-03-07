@@ -93,7 +93,8 @@ const projects = [
       <span class="section-tag">projects --verbose</span>
     </div>
     <p class="section-subtitle">
-      Selected work that shows how I approach authentication, infrastructure, and AI in production-like environments.
+      Selected work that shows how I approach authentication, infrastructure, and AI in
+      production-like environments.
     </p>
 
     <div class="projects-list">

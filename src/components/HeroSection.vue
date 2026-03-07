@@ -173,7 +173,7 @@ const scrollToSection = (e, id) => {
 }
 
 .hero-title::before {
-  content: '$ role --current '; 
+  content: '$ role --current ';
   color: var(--text-muted);
 }
 

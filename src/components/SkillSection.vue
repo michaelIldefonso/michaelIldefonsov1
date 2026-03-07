@@ -21,13 +21,19 @@ const skillRows = [
     </p>
 
     <div class="skills-output">
-      <p class="output-line">+-------------------+---------------------------------------------------------+</p>
-      <p class="output-line">| group             | items                                                   |</p>
-      <p class="output-line">+-------------------+---------------------------------------------------------+</p>
+      <p class="output-line">
+        +-------------------+---------------------------------------------------------+
+      </p>
+      <p class="output-line">| group | items |</p>
+      <p class="output-line">
+        +-------------------+---------------------------------------------------------+
+      </p>
       <p v-for="row in skillRows" :key="row.group" class="output-line">
         {{ `| ${row.group.padEnd(17, ' ')} | ${row.items.padEnd(55, ' ')} |` }}
       </p>
-      <p class="output-line">+-------------------+---------------------------------------------------------+</p>
+      <p class="output-line">
+        +-------------------+---------------------------------------------------------+
+      </p>
     </div>
   </section>
 </template>

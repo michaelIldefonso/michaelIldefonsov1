@@ -237,5 +237,4 @@ import AboutExpanded from './AboutExpanded.vue'
     width: 100%;
   }
 }
-
 </style>
