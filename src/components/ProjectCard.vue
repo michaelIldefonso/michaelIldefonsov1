@@ -36,6 +36,7 @@ defineProps({
             :key="link.url"
             :href="link.url"
             target="_blank"
+            rel="noopener noreferrer"
             class="link-pill link-source"
             >{{ link.label }}</a
           >
@@ -44,6 +45,7 @@ defineProps({
             :key="link.url"
             :href="link.url"
             target="_blank"
+            rel="noopener noreferrer"
             class="link-pill link-live"
             >↗ {{ link.label }}</a
           >
@@ -205,8 +207,8 @@ defineProps({
 
 .card-desc {
   color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.75;
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
 .card-tags {

@@ -3,11 +3,14 @@
 </script>
 
 <template>
-  <section class="skills">
+  <section class="skills section-shell">
     <div class="section-header">
       <span class="section-num">02</span>
       <span class="section-tag">Skills</span>
     </div>
+    <p class="section-subtitle">
+      The tools and platforms I reach for most, with solid stacks in color and prior exposure in dashed cards and muted chips.
+    </p>
 
     <div class="bento">
       <!-- Languages -->
@@ -92,36 +95,6 @@
 </template>
 
 <style scoped>
-.skills {
-  padding: 5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 3.5rem;
-}
-
-.section-num {
-  font-family: monospace;
-  font-size: 4rem;
-  font-weight: 900;
-  color: rgba(129, 140, 248, 0.08);
-  line-height: 1;
-  letter-spacing: -3px;
-  user-select: none;
-}
-
-.section-tag {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.02em;
-}
-
 .bento {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -216,16 +189,7 @@
   border: 1px solid var(--chip-warn-border);
 }
 
-.chip-ghost {
-  background: var(--chip-ghost-bg);
-  color: var(--text-muted);
-  border: 1px solid var(--chip-ghost-border);
-}
-
 @media (max-width: 900px) {
-  .skills {
-    padding: 4rem 2rem;
-  }
   .bento {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -238,9 +202,6 @@
 }
 
 @media (max-width: 600px) {
-  .skills {
-    padding: 3rem 1.25rem;
-  }
   .bento {
     grid-template-columns: 1fr;
   }

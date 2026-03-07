@@ -164,7 +164,7 @@ const scrollToSection = (e, id) => {
 
 .hero-sub {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.03rem;
   color: var(--text-muted);
   line-height: 1.8;
   padding-left: 1rem;

@@ -12,28 +12,28 @@ const sections = ref([
     title: 'Music & Guitar',
     icon: markRaw(MusicNote220Regular),
     subtitle: 'A Diverse Palette',
-    text: "I'm a guitarist inspired by Bach, B.B. King, and John Mayer. Whether Jazz, Metal, or Rock, music fuels my creative rhythm.",
+    text: "I'm a guitarist inspired by Bach, B.B. King, and John Mayer. Jazz, Metal, and Rock sessions fuel my creative rhythm.",
   },
   {
     id: 2,
     title: 'Gaming & Anime',
     icon: markRaw(SportsEsportsOutlined),
     subtitle: 'Strategic Storytelling',
-    text: 'I thrive on the strategy of StarCraft and the immersive world-building of anime. Complex logic and animation systems fascinate me.',
+    text: 'I thrive on the strategy of StarCraft and the immersive world-building of anime — complex logic and animation systems fascinate me.',
   },
   {
     id: 3,
     title: 'Lifelong Learner',
     icon: markRaw(SchoolOutlined),
     subtitle: 'Always Iterating',
-    text: 'Learning is a hobby, not a requirement. I deconstruct frameworks to understand component-based architecture from the ground up.',
+    text: 'Learning is a hobby, not a requirement. I like deconstructing frameworks to understand component-based architecture from the ground up.',
   },
   {
     id: 4,
     title: 'Night Owl',
     icon: markRaw(NightlightRound),
     subtitle: 'Peak Performance',
-    text: "Late nights and ambient soundscapes help me enter flow state. That's when complex bugs meet their match and polished UIs come alive.",
+    text: "Late nights and ambient soundscapes help me enter flow state — that’s when complex bugs finally meet their match.",
   },
 ])
 </script>

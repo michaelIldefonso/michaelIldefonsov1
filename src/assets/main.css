@@ -113,6 +113,54 @@ body::after {
   z-index: 0;
 }
 
+/* Global section layout */
+.section-shell {
+  padding: 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.section-num {
+  font-family: monospace;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(129, 140, 248, 0.08);
+  line-height: 1;
+  letter-spacing: -3px;
+  user-select: none;
+}
+
+.section-tag {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  max-width: 56ch;
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 2.75rem;
+}
+
+/* Accessible focus outlines */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 @keyframes ambientDrift {
   from {
     transform: translate3d(-2%, -1%, 0) scale(1);
@@ -130,6 +178,14 @@ body::after {
 
   body::after {
     opacity: 0.26;
+  }
+
+  .section-shell {
+    padding: 4rem 2rem;
+  }
+
+  .section-num {
+    font-size: 3.25rem;
   }
 }
 
@@ -160,6 +216,16 @@ body::after {
 
   body::after {
     opacity: 0.2;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-shell {
+    padding: 3rem 1.25rem;
+  }
+
+  .section-num {
+    font-size: 2.6rem;
   }
 }
 

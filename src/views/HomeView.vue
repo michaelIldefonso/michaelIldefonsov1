@@ -105,19 +105,19 @@ onUnmounted(() => {
 }
 
 .lazy-about {
-  min-height: 720px;
+  min-height: 660px;
 }
 
 .lazy-skills {
-  min-height: 600px;
+  min-height: 560px;
 }
 
 .lazy-projects {
-  min-height: 760px;
+  min-height: 700px;
 }
 
 .lazy-contact {
-  min-height: 780px;
+  min-height: 720px;
   padding-bottom: 8rem;
 }
 
@@ -130,19 +130,19 @@ onUnmounted(() => {
 
 @media (max-width: 900px) {
   .lazy-about {
-    min-height: 860px;
+    min-height: 800px;
   }
 
   .lazy-skills {
-    min-height: 760px;
+    min-height: 700px;
   }
 
   .lazy-projects {
-    min-height: 980px;
+    min-height: 900px;
   }
 
   .lazy-contact {
-    min-height: 980px;
+    min-height: 900px;
     padding-bottom: 7rem;
   }
 }

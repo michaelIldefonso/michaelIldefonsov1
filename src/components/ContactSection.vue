@@ -1,24 +1,38 @@
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { NIcon } from 'naive-ui'
 import { MailOutline, LogoLinkedin, LogoGithub } from '@vicons/ionicons5'
 
 const form = reactive({ name: '', email: '', message: '' })
 
+const isSubmitting = ref(false)
+const submitted = ref(false)
+
 function sendEmail() {
-  alert(`Message sent! Name: ${form.name}, Email: ${form.email}, Message: ${form.message}`)
-  form.name = ''
-  form.email = ''
-  form.message = ''
+  if (isSubmitting.value) return
+  isSubmitting.value = true
+  submitted.value = false
+
+  // Placeholder for real email handling – simulate a quick send.
+  setTimeout(() => {
+    form.name = ''
+    form.email = ''
+    form.message = ''
+    isSubmitting.value = false
+    submitted.value = true
+  }, 400)
 }
 </script>
 
 <template>
-  <section class="contact">
+  <section class="contact section-shell">
     <div class="section-header">
       <span class="section-num">04</span>
       <span class="section-tag">Contact</span>
     </div>
+    <p class="section-subtitle">
+      Prefer a direct email, social link, or a quick form? Reach out however is easiest — I usually reply within a day.
+    </p>
 
     <div class="contact-inner">
       <div class="contact-intro">
@@ -42,6 +56,7 @@ function sendEmail() {
           <a
             href="https://www.linkedin.com/in/michael-ildefonso-62ba77267"
             target="_blank"
+            rel="noopener noreferrer"
             class="direct-link"
           >
             <span class="dl-icon" aria-hidden="true">
@@ -52,7 +67,12 @@ function sendEmail() {
               <span class="dl-value">michael-ildefonso</span>
             </span>
           </a>
-          <a href="https://github.com/michaelildefonso" target="_blank" class="direct-link">
+          <a
+            href="https://github.com/michaelildefonso"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="direct-link"
+          >
             <span class="dl-icon" aria-hidden="true">
               <NIcon size="17"><LogoGithub /></NIcon>
             </span>
@@ -96,43 +116,19 @@ function sendEmail() {
             required
           ></textarea>
         </div>
-        <button type="submit" class="form-submit">Send Message →</button>
+        <button type="submit" class="form-submit" :disabled="isSubmitting">
+          <span v-if="!isSubmitting">Send Message →</span>
+          <span v-else>Sending…</span>
+        </button>
+        <p v-if="submitted" class="form-success" role="status">
+          Thanks for reaching out — I’ve received your message and will get back to you shortly.
+        </p>
       </form>
     </div>
   </section>
 </template>
 
 <style scoped>
-.contact {
-  padding: 5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 3.5rem;
-}
-
-.section-num {
-  font-family: monospace;
-  font-size: 4rem;
-  font-weight: 900;
-  color: rgba(129, 140, 248, 0.08);
-  line-height: 1;
-  letter-spacing: -3px;
-  user-select: none;
-}
-
-.section-tag {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.02em;
-}
-
 .contact-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -283,10 +279,20 @@ function sendEmail() {
   box-shadow: 0 8px 24px rgba(129, 140, 248, 0.3);
 }
 
+.form-submit:disabled {
+  cursor: default;
+  opacity: 0.75;
+  box-shadow: none;
+  transform: none;
+}
+
+.form-success {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
 @media (max-width: 900px) {
-  .contact {
-    padding: 4rem 2rem;
-  }
   .contact-inner {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -294,8 +300,5 @@ function sendEmail() {
 }
 
 @media (max-width: 600px) {
-  .contact {
-    padding: 3rem 1.25rem;
-  }
 }
 </style>

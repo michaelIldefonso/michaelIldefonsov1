@@ -3,11 +3,14 @@ import AboutExpanded from './AboutExpanded.vue'
 </script>
 
 <template>
-  <section class="about">
+  <section class="about section-shell">
     <div class="section-header">
       <span class="section-num">01</span>
       <span class="section-tag">About</span>
     </div>
+    <p class="section-subtitle">
+      A quick snapshot of who I am, what I care about, and how I think about building software.
+    </p>
 
     <div class="about-grid">
       <div class="about-avatar-col">
@@ -61,36 +64,6 @@ import AboutExpanded from './AboutExpanded.vue'
   </section>
 </template>
 <style scoped>
-.about {
-  padding: 5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 3.5rem;
-}
-
-.section-num {
-  font-family: monospace;
-  font-size: 4rem;
-  font-weight: 900;
-  color: rgba(129, 140, 248, 0.08);
-  line-height: 1;
-  letter-spacing: -3px;
-  user-select: none;
-}
-
-.section-tag {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.02em;
-}
-
 .about-grid {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -265,9 +238,6 @@ import AboutExpanded from './AboutExpanded.vue'
 }
 
 @media (max-width: 960px) {
-  .about {
-    padding: 4rem 2rem;
-  }
   .about-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -288,9 +258,6 @@ import AboutExpanded from './AboutExpanded.vue'
 }
 
 @media (max-width: 600px) {
-  .about {
-    padding: 3rem 1.25rem;
-  }
   .about-avatar-col {
     flex-direction: column;
   }

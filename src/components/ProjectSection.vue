@@ -87,11 +87,14 @@ const projects = [
 </script>
 
 <template>
-  <section class="projects">
+  <section class="projects section-shell">
     <div class="section-header">
       <span class="section-num">03</span>
       <span class="section-tag">Projects</span>
     </div>
+    <p class="section-subtitle">
+      Selected work that shows how I approach authentication, infrastructure, and AI in production-like environments.
+    </p>
 
     <div class="projects-list">
       <ProjectCard
@@ -106,6 +109,7 @@ const projects = [
       <a
         href="https://github.com/michaelIldefonso?tab=repositories"
         target="_blank"
+        rel="noopener noreferrer"
         class="cta-github"
       >
         View all repositories on GitHub →
@@ -115,40 +119,10 @@ const projects = [
 </template>
 
 <style scoped>
-.projects {
-  padding: 5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 3.5rem;
-}
-
-.section-num {
-  font-family: monospace;
-  font-size: 4rem;
-  font-weight: 900;
-  color: rgba(129, 140, 248, 0.08);
-  line-height: 1;
-  letter-spacing: -3px;
-  user-select: none;
-}
-
-.section-tag {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.02em;
-}
-
 .projects-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .cta-row {
@@ -174,17 +148,5 @@ const projects = [
   border-color: var(--accent);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(79, 70, 229, 0.2);
-}
-
-@media (max-width: 900px) {
-  .projects {
-    padding: 4rem 2rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .projects {
-    padding: 3rem 1.25rem;
-  }
 }
 </style>

@@ -82,12 +82,18 @@ onUnmounted(() => {
       </nav>
 
       <div class="nav-right">
-        <a href="https://github.com/michaelIldefonso" target="_blank" class="nav-icon-link">
+        <a
+          href="https://github.com/michaelIldefonso"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-icon-link"
+        >
           <NIcon size="19"><LogoGithub /></NIcon>
         </a>
         <a
           href="https://www.linkedin.com/in/michael-ildefonso-62ba77267"
           target="_blank"
+          rel="noopener noreferrer"
           class="nav-icon-link"
         >
           <NIcon size="19"><LogoLinkedin /></NIcon>
@@ -112,12 +118,18 @@ onUnmounted(() => {
         >{{ link.label }}</a
       >
       <div class="mobile-socials">
-        <a href="https://github.com/michaelIldefonso" target="_blank" class="nav-icon-link">
+        <a
+          href="https://github.com/michaelIldefonso"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-icon-link"
+        >
           <NIcon size="19"><LogoGithub /></NIcon>
         </a>
         <a
           href="https://www.linkedin.com/in/michael-ildefonso-62ba77267"
           target="_blank"
+          rel="noopener noreferrer"
           class="nav-icon-link"
         >
           <NIcon size="19"><LogoLinkedin /></NIcon>

@@ -4,10 +4,17 @@
       <span class="footer-logo">&lt;MI /&gt;</span>
       <p class="footer-copy">© 2026 Michael Ildefonso · Built with Vue 3 + Vite</p>
       <div class="footer-links">
-        <a href="https://github.com/michaelIldefonso" target="_blank" class="footer-link">GitHub</a>
+        <a
+          href="https://github.com/michaelIldefonso"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-link"
+          >GitHub</a
+        >
         <a
           href="https://www.linkedin.com/in/michael-ildefonso-62ba77267"
           target="_blank"
+          rel="noopener noreferrer"
           class="footer-link"
           >LinkedIn</a
         >
