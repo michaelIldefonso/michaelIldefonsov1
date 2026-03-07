@@ -25,9 +25,10 @@
 
 <style scoped>
 .footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 2.5rem 5rem;
+  border-top: 1px solid rgba(var(--accent-rgb), 0.22);
+  padding: 1.1rem 5rem;
   margin-top: 0;
+  background: #0b0b0b;
 }
 
 .footer-inner {
@@ -41,17 +42,22 @@
 }
 
 .footer-logo {
-  font-family: 'Fira Code', monospace;
-  font-size: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--accent);
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
 }
 
 .footer-copy {
-  font-size: 0.85rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
-  letter-spacing: 0.3px;
+  letter-spacing: 0.04em;
+}
+
+.footer-copy::before {
+  content: '[status] ';
+  color: var(--accent);
 }
 
 .footer-links {
@@ -60,9 +66,11 @@
 }
 
 .footer-link {
-  font-size: 0.85rem;
+  font-size: 0.74rem;
   color: var(--text-muted);
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   transition: color 0.2s;
 }
 

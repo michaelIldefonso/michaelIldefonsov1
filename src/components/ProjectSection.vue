@@ -90,7 +90,7 @@ const projects = [
   <section class="projects section-shell">
     <div class="section-header">
       <span class="section-num">03</span>
-      <span class="section-tag">Projects</span>
+      <span class="section-tag">projects --verbose</span>
     </div>
     <p class="section-subtitle">
       Selected work that shows how I approach authentication, infrastructure, and AI in production-like environments.
@@ -122,7 +122,7 @@ const projects = [
 .projects-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.4rem;
 }
 
 .cta-row {
@@ -132,21 +132,28 @@ const projects = [
 }
 
 .cta-github {
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--accent);
   text-decoration: none;
-  padding: 0.75rem 2rem;
-  border: 1px solid rgba(129, 140, 248, 0.55);
-  background: rgba(129, 140, 248, 0.09);
-  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1.3rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.45);
+  background: rgba(var(--accent-rgb), 0.08);
+  border-radius: 0;
   transition: all 0.25s ease;
 }
 
+.cta-github::before {
+  content: '$ ';
+  color: rgba(var(--accent-rgb), 0.75);
+}
+
 .cta-github:hover {
-  background: rgba(129, 140, 248, 0.16);
+  background: rgba(var(--accent-rgb), 0.16);
   border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.2);
+  transform: none;
+  box-shadow: none;
 }
 </style>

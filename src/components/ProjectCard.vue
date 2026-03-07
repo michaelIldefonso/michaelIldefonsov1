@@ -15,6 +15,12 @@ defineProps({
   <article class="project-card" :class="{ 'project-card-rekapo': title === 'Rekapo' }">
     <div class="card-num">{{ String(index + 1).padStart(2, '0') }}</div>
     <div class="card-body">
+      <div class="card-window-bar">
+        <span></span>
+        <span></span>
+        <span></span>
+        <p>{{ title.toLowerCase().replaceAll(' ', '_') }}.log</p>
+      </div>
       <div class="card-head">
         <div>
           <p class="card-subtitle">{{ subtitle }}</p>
@@ -65,18 +71,18 @@ defineProps({
   display: grid;
   grid-template-columns: 64px 1fr;
   gap: 2rem;
-  padding: 2rem;
-  border-radius: 16px;
-  border: 1px solid rgba(129, 140, 248, 0.1);
-  background: rgba(13, 18, 32, 0.6);
+  padding: 1.7rem;
+  border-radius: 0;
+  border: 1px solid rgba(var(--accent-rgb), 0.22);
+  background: #101010;
   transition: all 0.25s ease;
 }
 
 .project-card:hover {
-  border-color: rgba(129, 140, 248, 0.3);
-  background: rgba(18, 25, 41, 0.8);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(var(--accent-rgb), 0.42);
+  background: #141414;
+  transform: none;
+  box-shadow: none;
 }
 
 .project-card-rekapo::before {
@@ -85,7 +91,7 @@ defineProps({
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(135deg, #818cf8 0%, #22d3ee 50%, #818cf8 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 50%, var(--accent) 100%);
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -95,13 +101,13 @@ defineProps({
 }
 
 .card-num {
-  font-family: monospace;
-  font-size: 2.5rem;
+  font-family: var(--font-body);
+  font-size: 2.2rem;
   font-weight: 900;
-  color: rgba(129, 140, 248, 0.15);
+  color: rgba(var(--accent-rgb), 0.2);
   line-height: 1;
-  padding-top: 4px;
-  letter-spacing: -2px;
+  padding-top: 0.2rem;
+  letter-spacing: -1px;
   user-select: none;
 }
 
@@ -109,6 +115,44 @@ defineProps({
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.card-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0;
+  background: rgba(7, 12, 9, 0.88);
+  border: 1px solid rgba(var(--accent-rgb), 0.17);
+}
+
+.card-window-bar span {
+  width: 9px;
+  height: 9px;
+  border-radius: 0;
+  background: rgba(var(--accent-rgb), 0.34);
+}
+
+.card-window-bar span:first-child {
+  background: rgba(255, 241, 118, 0.6);
+}
+
+.card-window-bar span:nth-child(2) {
+  background: rgba(var(--accent-rgb), 0.65);
+}
+
+.card-window-bar span:nth-child(3) {
+  background: rgba(var(--accent-rgb), 0.5);
+}
+
+.card-window-bar p {
+  margin: 0;
+  margin-left: 0.45rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.07em;
+  text-transform: lowercase;
 }
 
 .card-head {
@@ -120,12 +164,17 @@ defineProps({
 }
 
 .card-subtitle {
-  font-family: monospace;
+  font-family: var(--font-body);
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.14em;
   color: var(--accent);
   margin-bottom: 4px;
+}
+
+.card-subtitle::before {
+  content: 'cat ';
+  color: var(--text-muted);
 }
 
 .card-title {
@@ -144,10 +193,10 @@ defineProps({
 
 .meta-pill {
   padding: 0.18rem 0.55rem;
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -177,38 +226,45 @@ defineProps({
 }
 
 .link-pill {
-  padding: 0.3rem 0.75rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0;
+  font-size: 0.72rem;
   font-weight: 600;
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   transition: all 0.2s;
 }
 
-.link-source {
-  background: rgba(255, 255, 255, 0.05);
+.link-pill::before {
+  content: '> ';
   color: var(--text-muted);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.link-source {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-muted);
+  border: 1px solid rgba(var(--accent-rgb), 0.22);
 }
 .link-source:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(var(--accent-rgb), 0.08);
 }
 
 .link-live {
-  background: rgba(129, 140, 248, 0.1);
+  background: rgba(var(--accent-rgb), 0.1);
   color: var(--accent);
-  border: 1px solid rgba(129, 140, 248, 0.2);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
 }
 .link-live:hover {
-  background: rgba(129, 140, 248, 0.18);
+  background: rgba(var(--accent-rgb), 0.18);
   border-color: var(--accent);
 }
 
 .card-desc {
   color: var(--text-muted);
-  font-size: 1rem;
-  line-height: 1.8;
+  font-size: 0.8rem;
+  line-height: 1.9;
 }
 
 .card-tags {
@@ -219,10 +275,10 @@ defineProps({
 
 .tech-tag {
   padding: 0.2rem 0.6rem;
-  background: rgba(129, 140, 248, 0.06);
-  border: 1px solid rgba(129, 140, 248, 0.12);
-  border-radius: 5px;
-  font-size: 0.78rem;
+  background: rgba(var(--accent-rgb), 0.07);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  border-radius: 0;
+  font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 500;
 }

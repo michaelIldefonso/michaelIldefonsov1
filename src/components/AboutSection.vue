@@ -6,7 +6,7 @@ import AboutExpanded from './AboutExpanded.vue'
   <section class="about section-shell">
     <div class="section-header">
       <span class="section-num">01</span>
-      <span class="section-tag">About</span>
+      <span class="section-tag">whoami</span>
     </div>
     <p class="section-subtitle">
       A quick snapshot of who I am, what I care about, and how I think about building software.
@@ -67,7 +67,7 @@ import AboutExpanded from './AboutExpanded.vue'
 .about-grid {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 5rem;
+  gap: 2rem;
   align-items: start;
 }
 
@@ -75,73 +75,45 @@ import AboutExpanded from './AboutExpanded.vue'
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .avatar-frame {
   position: relative;
   width: 160px;
   height: 160px;
-  border-radius: 24px;
-}
-
-.avatar-frame::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 27px;
-  background: conic-gradient(
-    from 180deg,
-    rgba(129, 140, 248, 0.08),
-    rgba(129, 140, 248, 0.7),
-    rgba(129, 140, 248, 0.1),
-    rgba(129, 140, 248, 0.75),
-    rgba(129, 140, 248, 0.08)
-  );
-  filter: blur(1px);
-  z-index: 0;
+  border: 1px solid var(--border-strong);
+  background: #111;
 }
 
 .avatar-initials {
-  position: relative;
-  z-index: 2;
+  position: absolute;
+  inset: 0;
   width: 160px;
   height: 160px;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at 26% 20%, rgba(129, 140, 248, 0.4) 0%, transparent 45%),
-    linear-gradient(145deg, rgba(17, 24, 39, 0.96) 10%, rgba(27, 38, 64, 0.94) 100%);
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(var(--accent-rgb), 0.03) 0px,
+    rgba(var(--accent-rgb), 0.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #dbe4ff;
-  text-shadow: 0 0 20px rgba(129, 140, 248, 0.35);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--accent);
   letter-spacing: 2px;
-  border: 1px solid rgba(129, 140, 248, 0.34);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 16px 36px rgba(2, 6, 23, 0.5),
-    0 0 32px rgba(129, 140, 248, 0.2);
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
 }
 
 .avatar-ring {
   position: absolute;
-  inset: -7px;
-  border-radius: 29px;
-  border: 1px dashed rgba(129, 140, 248, 0.24);
-  animation: spin 26s linear infinite;
+  inset: -4px;
+  border: 1px dashed rgba(var(--accent-rgb), 0.3);
+  animation: none;
   z-index: 1;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .about-stats {
@@ -157,13 +129,12 @@ import AboutExpanded from './AboutExpanded.vue'
   align-items: center;
   gap: 2px;
   padding: 0.75rem;
-  border-radius: 10px;
-  background: rgba(129, 140, 248, 0.04);
-  border: 1px solid rgba(129, 140, 248, 0.1);
+  background: #101010;
+  border: 1px solid var(--border);
 }
 
 .stat-val {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: var(--accent);
   line-height: 1;
@@ -187,10 +158,10 @@ import AboutExpanded from './AboutExpanded.vue'
 
 .about-title {
   font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text);
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
 }
 
 .accent-word {
@@ -205,8 +176,8 @@ import AboutExpanded from './AboutExpanded.vue'
 
 .about-text p {
   color: var(--text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-size: 0.88rem;
+  line-height: 1.9;
 }
 
 .about-text strong {
@@ -221,20 +192,20 @@ import AboutExpanded from './AboutExpanded.vue'
 }
 
 .tag {
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
-  font-size: 0.82rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--accent);
-  background: rgba(129, 140, 248, 0.08);
-  border: 1px solid rgba(129, 140, 248, 0.2);
-  letter-spacing: 0.3px;
+  background: rgba(var(--accent-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .about-more {
-  margin-top: 4rem;
-  padding-top: 3rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 2.2rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(var(--accent-rgb), 0.2);
 }
 
 @media (max-width: 960px) {
@@ -267,9 +238,4 @@ import AboutExpanded from './AboutExpanded.vue'
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .avatar-ring {
-    animation: none;
-  }
-}
 </style>

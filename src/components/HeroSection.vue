@@ -113,7 +113,7 @@ const scrollToSection = (e, id) => {
 }
 
 .hero {
-  padding: calc(var(--nav-height) + 4rem) 5rem 1.5rem; /* was 3rem, try 1.5rem */
+  padding: calc(var(--nav-height) + 3.3rem) 5rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -123,36 +123,58 @@ const scrollToSection = (e, id) => {
   flex-direction: column;
   gap: 1rem;
   max-width: 100%;
+  border: none;
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(14, 14, 14, 0.95), rgba(10, 10, 10, 0.98)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--accent-rgb), 0.03) 0px,
+      rgba(var(--accent-rgb), 0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  padding: 1.1rem 1.6rem 1.6rem;
+  box-shadow: none;
 }
 
 .hero-greeting {
-  font-family: monospace;
-  font-size: 0.95rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
   color: var(--accent);
-  letter-spacing: 3px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   animation: fadeUp 0.8s ease both;
 }
 
+.hero-greeting::before {
+  content: '$ whoami -> ';
+  color: rgba(var(--accent-rgb), 0.75);
+}
+
 .hero-name {
-  font-size: clamp(4rem, 8vw, 7rem);
+  font-size: clamp(2.4rem, 7vw, 5rem);
   max-width: 700px; /* stops it from going too wide vs the content below */
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
   color: var(--text);
   animation: fadeUp 0.8s ease 0.1s both;
-  background: linear-gradient(135deg, #e0e7ff, #818cf8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .hero-title {
-  font-size: clamp(1.1rem, 2vw, 1.45rem);
-  font-weight: 500;
+  font-size: clamp(0.78rem, 1.4vw, 0.9rem);
+  font-weight: 600;
   color: var(--accent);
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   animation: fadeUp 0.8s ease 0.2s both;
+}
+
+.hero-title::before {
+  content: '$ role --current '; 
+  color: var(--text-muted);
 }
 
 .hero-sub-wrap {
@@ -164,11 +186,11 @@ const scrollToSection = (e, id) => {
 
 .hero-sub {
   margin: 0;
-  font-size: 1.03rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.8;
   padding-left: 1rem;
-  border-left: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--accent) 75%, transparent);
   letter-spacing: 0.01em;
   animation: fadeUp 0.8s ease 0.3s both;
   text-wrap: balance;
@@ -195,36 +217,48 @@ const scrollToSection = (e, id) => {
 }
 
 .btn-primary {
-  padding: 0.75rem 1.75rem;
-  background: var(--accent);
-  color: #080b12;
-  border-radius: 8px;
+  padding: 0.55rem 0.95rem;
+  background: rgba(var(--accent-rgb), 0.12);
+  color: var(--accent);
+  border-radius: 0;
+  border: 1px solid rgba(var(--accent-rgb), 0.45);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.72rem;
   text-decoration: none;
   transition: all 0.25s ease;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.btn-primary::before {
+  content: 'run ';
+  color: var(--text-muted);
 }
 .btn-primary:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(129, 140, 248, 0.3);
+  background: rgba(var(--accent-rgb), 0.22);
+  transform: none;
+  box-shadow: none;
 }
 
 .btn-ghost {
-  padding: 0.75rem 1.75rem;
-  border: 1px solid rgba(129, 140, 248, 0.35);
+  padding: 0.55rem 0.95rem;
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
   color: var(--text);
-  border-radius: 8px;
+  border-radius: 0;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.72rem;
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
   transition: all 0.25s ease;
 }
+.btn-ghost::before {
+  content: 'run ';
+  color: var(--text-muted);
+}
 .btn-ghost:hover {
-  background: rgba(129, 140, 248, 0.08);
+  background: rgba(var(--accent-rgb), 0.08);
   border-color: var(--accent);
-  transform: translateY(-2px);
+  transform: none;
 }
 
 @media (max-width: 960px) {
@@ -235,6 +269,7 @@ const scrollToSection = (e, id) => {
   .hero-content {
     align-items: center;
     max-width: 100%;
+    padding: 1.6rem;
   }
   .hero-sub-wrap {
     max-width: 100%;

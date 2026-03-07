@@ -66,7 +66,7 @@ onUnmounted(() => {
   <header class="nav-header" :class="{ scrolled: isScrolled }">
     <div class="nav-inner">
       <a class="nav-logo" href="#" @click="scrollTop">
-        <span class="logo-tag">&lt;</span>MI<span class="logo-tag">/&gt;</span>
+        <span class="logo-tag">PS</span> C:\\Users\\michael&gt;
       </a>
 
       <nav class="nav-links">
@@ -152,11 +152,11 @@ onUnmounted(() => {
 }
 
 .nav-header.scrolled {
-  background: rgba(8, 11, 18, 0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.22);
+  box-shadow: none;
 }
 
 .nav-inner {
@@ -167,10 +167,11 @@ onUnmounted(() => {
   align-items: center;
   gap: 2rem;
   padding: 0 5rem;
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.18);
 }
 
 .nav-logo {
-  font-family: 'Fira Code', monospace;
+  font-family: var(--font-body);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text);
@@ -193,13 +194,22 @@ onUnmounted(() => {
 
 .nav-link {
   padding: 0.4rem 0.85rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
+  border-radius: 0;
+  font-size: 0.74rem;
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
   position: relative;
+}
+
+.nav-link::before {
+  content: './';
+  color: var(--text-muted);
 }
 .nav-link::after {
   content: '';
@@ -215,6 +225,7 @@ onUnmounted(() => {
 }
 .nav-link:hover {
   color: var(--text);
+  background: rgba(var(--accent-rgb), 0.07);
 }
 .nav-link:hover::after {
   transform: scaleX(0.7);
@@ -238,16 +249,19 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 0;
   color: var(--text-muted);
   text-decoration: none;
+  border: 1px solid transparent;
   transition:
     color 0.2s,
-    background-color 0.2s;
+    background-color 0.2s,
+    border-color 0.2s;
 }
 .nav-icon-link:hover {
   color: var(--text);
-  background: rgba(129, 140, 248, 0.1);
+  background: rgba(var(--accent-rgb), 0.08);
+  border-color: rgba(var(--accent-rgb), 0.28);
 }
 
 .mobile-toggle {
@@ -256,15 +270,15 @@ onUnmounted(() => {
   height: 36px;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 0;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
   color: var(--text);
   cursor: pointer;
   transition: background 0.2s;
 }
 .mobile-toggle:hover {
-  background: rgba(129, 140, 248, 0.08);
+  background: rgba(var(--accent-rgb), 0.08);
 }
 
 .mobile-menu {
@@ -272,8 +286,8 @@ onUnmounted(() => {
   flex-direction: column;
   padding: 0.75rem 2rem 1.5rem;
   gap: 0.1rem;
-  background: rgba(8, 11, 18, 0.98);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(10, 10, 10, 0.98);
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.18);
 }
 .mobile-menu.open {
   display: flex;
@@ -285,7 +299,9 @@ onUnmounted(() => {
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.14);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   transition: color 0.2s;
 }
 .mobile-link:last-of-type {

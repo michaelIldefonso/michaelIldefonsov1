@@ -1,217 +1,57 @@
 <script setup>
-// Skills section - no additional scripts needed
+const skillRows = [
+  { group: 'languages', items: 'python, javascript, html/css' },
+  { group: 'frameworks', items: 'fastapi, node/express, vue3/vite' },
+  { group: 'ai_ml', items: 'whisper, faster-whisper, ffmpeg, huggingface, colab' },
+  { group: 'auth_db', items: 'postgresql, sqlalchemy, oauth2, jwt' },
+  { group: 'devops', items: 'github actions, git, railway, vercel' },
+  { group: 'cloud_network', items: 'cloudflare r2, modal, cdn, dns, ssl, cors' },
+  { group: 'exposure', items: 'react native, react, php/laravel, mysql, pydantic, eslint' },
+]
 </script>
 
 <template>
   <section class="skills section-shell">
     <div class="section-header">
       <span class="section-num">02</span>
-      <span class="section-tag">Skills</span>
+      <span class="section-tag">skills --list</span>
     </div>
     <p class="section-subtitle">
-      The tools and platforms I reach for most, with solid stacks in color and prior exposure in dashed cards and muted chips.
+      Current stack as terminal output. Primary tools first, then adjacent exposure.
     </p>
 
-    <div class="bento">
-      <!-- Languages -->
-      <div class="bento-card bento-sm">
-        <p class="card-label">Languages</p>
-        <div class="chip-list">
-          <span class="chip chip-primary">Python</span>
-          <span class="chip chip-primary">JavaScript</span>
-          <span class="chip chip-ghost">HTML / CSS</span>
-        </div>
-      </div>
-
-      <!-- Frameworks -->
-      <div class="bento-card bento-sm">
-        <p class="card-label">Frameworks</p>
-        <div class="chip-list">
-          <span class="chip chip-primary">FastAPI</span>
-          <span class="chip chip-primary">Node / Express</span>
-          <span class="chip chip-primary">Vue 3 / Vite</span>
-        </div>
-      </div>
-
-      <!-- DevOps -->
-      <div class="bento-card bento-sm">
-        <p class="card-label">DevOps &amp; Delivery</p>
-        <div class="chip-list">
-          <span class="chip chip-info">GitHub Actions</span>
-          <span class="chip chip-info">Git / GitHub</span>
-          <span class="chip chip-info">Railway / Vercel</span>
-        </div>
-      </div>
-
-      <!-- AI / ML Wide -->
-      <div class="bento-card bento-md">
-        <p class="card-label">AI / Machine Learning</p>
-        <div class="chip-list">
-          <span class="chip chip-accent">Fine-tuned Whisper</span>
-          <span class="chip chip-accent">faster-whisper</span>
-          <span class="chip chip-accent">FFmpeg</span>
-          <span class="chip chip-ghost">HuggingFace</span>
-          <span class="chip chip-ghost">Google Colab</span>
-        </div>
-      </div>
-
-      <!-- Auth & DB -->
-      <div class="bento-card bento-sm">
-        <p class="card-label">Auth &amp; Persistence</p>
-        <div class="chip-list">
-          <span class="chip chip-warn">PostgreSQL</span>
-          <span class="chip chip-warn">SQLAlchemy</span>
-          <span class="chip chip-ghost">OAuth2 / JWT</span>
-        </div>
-      </div>
-
-      <!-- Cloud + Exposure Row -->
-      <div class="bento-pair">
-        <div class="bento-card">
-          <p class="card-label">Cloud &amp; Network</p>
-          <div class="chip-list">
-            <span class="chip chip-ghost">Cloudflare R2</span>
-            <span class="chip chip-ghost">Modal</span>
-            <span class="chip chip-ghost">CDN Caching</span>
-            <span class="chip chip-ghost">DNS / SSL</span>
-            <span class="chip chip-ghost">CORS</span>
-          </div>
-        </div>
-
-        <div class="bento-card exposure">
-          <p class="card-label">Exposure &amp; Prior Use</p>
-          <div class="chip-list">
-            <span class="chip chip-ghost">React Native</span>
-            <span class="chip chip-ghost">React</span>
-            <span class="chip chip-ghost">PHP / Laravel</span>
-            <span class="chip chip-ghost">MySQL</span>
-            <span class="chip chip-ghost">Pydantic</span>
-            <span class="chip chip-ghost">ESLint</span>
-          </div>
-        </div>
-      </div>
+    <div class="skills-output">
+      <p class="output-line">+-------------------+---------------------------------------------------------+</p>
+      <p class="output-line">| group             | items                                                   |</p>
+      <p class="output-line">+-------------------+---------------------------------------------------------+</p>
+      <p v-for="row in skillRows" :key="row.group" class="output-line">
+        {{ `| ${row.group.padEnd(17, ' ')} | ${row.items.padEnd(55, ' ')} |` }}
+      </p>
+      <p class="output-line">+-------------------+---------------------------------------------------------+</p>
     </div>
   </section>
 </template>
 
 <style scoped>
-.bento {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+.skills-output {
+  border: 1px solid var(--border);
+  background: #0f0f0f;
+  padding: 0.9rem;
+  overflow-x: auto;
 }
 
-.bento-card {
-  padding: 1.75rem;
-  border-radius: 16px;
-  border: 1px solid rgba(129, 140, 248, 0.12);
-  background: rgba(13, 18, 32, 0.8);
-  transition:
-    border-color 0.25s ease,
-    background-color 0.25s ease,
-    transform 0.25s ease;
+.output-line {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.7;
+  white-space: pre;
+  color: var(--text-secondary);
 }
 
-.bento-card:hover {
-  border-color: rgba(129, 140, 248, 0.28);
-  background: rgba(18, 25, 41, 0.9);
-  transform: translateY(-3px);
-}
-
-.bento-md {
-  grid-column: span 2;
-}
-.bento-wide {
-  grid-column: span 2;
-}
-
-.bento-full {
-  grid-column: 1 / -1;
-}
-
-.bento-pair {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-}
-
-.exposure {
-  border-style: dashed;
-  opacity: 0.9;
-  background: linear-gradient(180deg, rgba(129, 140, 248, 0.06), rgba(13, 18, 32, 0.82));
-}
-
-.card-label {
-  font-family: monospace;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+.output-line:first-child,
+.output-line:nth-child(2),
+.output-line:nth-child(3),
+.output-line:last-child {
   color: var(--accent);
-  margin-bottom: 1rem;
-}
-
-.chip-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.chip {
-  padding: 0.3rem 0.75rem;
-  border-radius: 6px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-}
-
-.chip-primary {
-  background: var(--chip-primary-bg);
-  color: var(--accent);
-  border: 1px solid var(--chip-primary-border);
-}
-
-.chip-accent {
-  background: var(--chip-accent-bg);
-  color: var(--chip-accent);
-  border: 1px solid var(--chip-accent-border);
-}
-
-.chip-info {
-  background: var(--chip-info-bg);
-  color: var(--chip-info);
-  border: 1px solid var(--chip-info-border);
-}
-
-.chip-warn {
-  background: var(--chip-warn-bg);
-  color: var(--chip-warn);
-  border: 1px solid var(--chip-warn-border);
-}
-
-@media (max-width: 900px) {
-  .bento {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .bento-wide {
-    grid-column: span 2;
-  }
-  .bento-full {
-    grid-column: span 2;
-  }
-}
-
-@media (max-width: 600px) {
-  .bento {
-    grid-template-columns: 1fr;
-  }
-  .bento-md,
-  .bento-wide,
-  .bento-full {
-    grid-column: span 1;
-  }
-  .bento-pair {
-    grid-template-columns: 1fr;
-  }
 }
 </style>

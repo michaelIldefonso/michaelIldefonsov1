@@ -28,7 +28,7 @@ function sendEmail() {
   <section class="contact section-shell">
     <div class="section-header">
       <span class="section-num">04</span>
-      <span class="section-tag">Contact</span>
+      <span class="section-tag">contact --send</span>
     </div>
     <p class="section-subtitle">
       Prefer a direct email, social link, or a quick form? Reach out however is easiest — I usually reply within a day.
@@ -132,16 +132,17 @@ function sendEmail() {
 .contact-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  gap: 2rem;
   align-items: start;
 }
 
 .contact-heading {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 800;
+  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  font-weight: 700;
   color: var(--text);
   line-height: 1.2;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   margin-bottom: 1rem;
 }
 
@@ -151,9 +152,9 @@ function sendEmail() {
 
 .contact-desc {
   color: var(--text-muted);
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
+  font-size: 0.8rem;
+  line-height: 1.9;
+  margin-bottom: 1.3rem;
 }
 
 .direct-links {
@@ -166,30 +167,30 @@ function sendEmail() {
   display: flex;
   align-items: center;
   gap: 0.9rem;
-  padding: 1rem 1.25rem;
-  border-radius: 10px;
-  border: 1px solid rgba(129, 140, 248, 0.16);
-  background: rgba(13, 18, 32, 0.58);
+  padding: 0.8rem;
+  border-radius: 0;
+  border: 1px solid var(--border);
+  background: #101010;
   text-decoration: none;
   transition: all 0.2s;
 }
 
 .direct-link:hover {
-  border-color: rgba(129, 140, 248, 0.42);
-  background: rgba(129, 140, 248, 0.08);
-  transform: translateY(-2px);
+  border-color: rgba(var(--accent-rgb), 0.35);
+  background: #151515;
+  transform: none;
 }
 
 .dl-icon {
   width: 34px;
   height: 34px;
-  border-radius: 8px;
+  border-radius: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   color: var(--accent);
-  background: rgba(129, 140, 248, 0.12);
-  border: 1px solid rgba(129, 140, 248, 0.25);
+  background: rgba(var(--accent-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
 }
 
 .dl-copy {
@@ -199,15 +200,15 @@ function sendEmail() {
 }
 
 .dl-label {
-  font-family: monospace;
-  font-size: 0.72rem;
+  font-family: var(--font-body);
+  font-size: 0.66rem;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 0.08em;
   color: var(--accent);
 }
 
 .dl-value {
-  font-size: 0.92rem;
+  font-size: 0.76rem;
   color: var(--text);
   font-weight: 500;
 }
@@ -216,6 +217,9 @@ function sendEmail() {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  border: 1px solid var(--border);
+  background: #101010;
+  padding: 1rem;
 }
 
 .form-group {
@@ -225,22 +229,27 @@ function sendEmail() {
 }
 
 .form-label {
-  font-size: 0.82rem;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
+}
+
+.form-label::before {
+  content: 'set ';
+  color: var(--accent);
 }
 
 .form-input,
 .form-textarea {
   width: 100%;
-  padding: 0.75rem 1rem;
-  background: rgba(13, 18, 32, 0.8);
-  border: 1px solid rgba(129, 140, 248, 0.15);
-  border-radius: 8px;
+  padding: 0.65rem 0.8rem;
+  background: #0c0c0c;
+  border: 1px solid var(--border);
+  border-radius: 0;
   color: var(--text);
-  font-size: 0.95rem;
+  font-size: 0.78rem;
   font-family: var(--font-body);
   transition: all 0.2s;
   resize: none;
@@ -255,28 +264,35 @@ function sendEmail() {
 .form-input:focus,
 .form-textarea:focus {
   border-color: var(--accent);
-  background: rgba(18, 25, 41, 0.9);
-  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.08);
+  background: #0f0f0f;
+  box-shadow: none;
 }
 
 .form-submit {
   align-self: flex-start;
-  padding: 0.8rem 2rem;
-  background: var(--accent);
-  color: #080b12;
+  padding: 0.6rem 1rem;
+  background: rgba(var(--accent-rgb), 0.12);
+  color: var(--accent);
   border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
+  border-radius: 0;
+  border: 1px solid rgba(var(--accent-rgb), 0.35);
+  font-size: 0.75rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.25s ease;
   font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.form-submit::before {
+  content: '$ ';
 }
 
 .form-submit:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(129, 140, 248, 0.3);
+  background: rgba(var(--accent-rgb), 0.2);
+  transform: none;
+  box-shadow: none;
 }
 
 .form-submit:disabled {
@@ -288,7 +304,7 @@ function sendEmail() {
 
 .form-success {
   margin-top: 0.75rem;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   color: var(--accent);
 }
 
