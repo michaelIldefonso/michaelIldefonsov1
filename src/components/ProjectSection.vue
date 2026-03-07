@@ -146,6 +146,7 @@ const projects = [
   box-shadow: 0 4px 15px rgba(66, 184, 131, 0.2);
 }
 .section-label {
+  font-family: monospace;
   color: var(--accent);
   font-size: 0.85rem;
   letter-spacing: 2px;

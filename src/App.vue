@@ -55,7 +55,7 @@ const themeOverrides = {
   height: 400px;
   background: rgba(129, 140, 248, 0.09);
   top: 20%;
-  right: 30%;
+  left: 5%;
   animation-duration: 32s;
   animation-delay: -8s;
 }

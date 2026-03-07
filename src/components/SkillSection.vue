@@ -187,6 +187,7 @@ import {
   font-size: 0.85rem;
   letter-spacing: 2px;
   margin-bottom: 2.5rem;
+  font-family: monospace;
 }
 .section-label-mobile {
   margin-left: 1rem;

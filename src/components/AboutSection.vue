@@ -65,6 +65,7 @@ b {
 }
 
 .section-label {
+  font-family: monospace;
   color: var(--accent);
   font-size: 0.85rem;
   letter-spacing: 2px;

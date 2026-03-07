@@ -44,6 +44,7 @@ const scrollToSection = (e, sectionId) => {
       </div>
       <a href="#" class="hero-cv-link">View CV →</a>
     </div>
+
     <div class="hero-scroll">
       <n-button text style="font-size: 24px">
         <ChevronDoubleDown20Filled :width="34" :height="34" />
@@ -118,7 +119,15 @@ const scrollToSection = (e, sectionId) => {
   display: flex;
   flex-direction: column;
   padding: 0 80px;
+  justify-content: center;
   position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-left: 10rem;
+  padding-right: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .hero-social {
