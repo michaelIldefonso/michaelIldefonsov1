@@ -1,14 +1,11 @@
 <script setup>
 import { reactive } from 'vue'
-import { NFormItem, NInput, NButton, NSpace } from 'naive-ui'
+import { NIcon } from 'naive-ui'
+import { MailOutline, LogoLinkedin, LogoGithub } from '@vicons/ionicons5'
 
-const form = reactive({
-  name: '',
-  email: '',
-  message: '',
-})
+const form = reactive({ name: '', email: '', message: '' })
+
 function sendEmail() {
-  // Placeholder for email sending logic
   alert(`Message sent! Name: ${form.name}, Email: ${form.email}, Message: ${form.message}`)
   form.name = ''
   form.email = ''
@@ -17,219 +14,288 @@ function sendEmail() {
 </script>
 
 <template>
-  <section id="contact" class="section section-contact">
-    <n-p class="section-label">// get in touch</n-p>
+  <section class="contact">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-tag">Contact</span>
+    </div>
 
-    <h2 class="section-title">Contact Me</h2>
-    <p class="section-description">
-      Have a project in mind or just want to connect? Feel free to reach out.
-    </p>
-
-    <div class="contact-wrapper">
-      <form class="contact-form" @submit.prevent="sendEmail">
-        <n-form-item label="Name" :show-feedback="false">
-          <n-input
-            v-model:value="form.name"
-            placeholder="Your Name"
-            :input-props="{ autocomplete: 'name' }"
-          />
-        </n-form-item>
-        <n-form-item label="Email" :show-feedback="false">
-          <n-input
-            v-model:value="form.email"
-            type="text"
-            placeholder="your@email.com"
-            :input-props="{ autocomplete: 'email' }"
-          />
-        </n-form-item>
-        <n-form-item label="Message" :show-feedback="false">
-          <n-input
-            v-model:value="form.message"
-            type="textarea"
-            placeholder="What's on your mind?"
-            :autosize="{ minRows: 4, maxRows: 8 }"
-          />
-        </n-form-item>
-        <n-button type="primary" size="large" attr-type="submit" class="submit-btn">
-          Send Message
-        </n-button>
-      </form>
-
-      <div class="contact-links">
-        <p class="links-label">Or reach me directly</p>
-        <n-space vertical :size="12">
-          <n-button text tag="a" href="mailto:michaelildefonso20@gmail.com" class="contact-link">
-            michaelildefonso20@gmail.com
-          </n-button>
-          <n-button
-            text
-            tag="a"
+    <div class="contact-inner">
+      <div class="contact-intro">
+        <h2 class="contact-heading">
+          Let's build something <span class="accent-word">together</span>
+        </h2>
+        <p class="contact-desc">
+          Have a project in mind, a role you think I'd fit, or just want to connect? Drop me a
+          message — I'll get back to you promptly.
+        </p>
+        <div class="direct-links">
+          <a href="mailto:michaelildefonso20@gmail.com" class="direct-link">
+            <span class="dl-icon" aria-hidden="true">
+              <NIcon size="17"><MailOutline /></NIcon>
+            </span>
+            <span class="dl-copy">
+              <span class="dl-label">Email</span>
+              <span class="dl-value">michaelildefonso20@gmail.com</span>
+            </span>
+          </a>
+          <a
             href="https://www.linkedin.com/in/michael-ildefonso-62ba77267"
             target="_blank"
-            class="contact-link"
+            class="direct-link"
           >
-            LinkedIn
-          </n-button>
-          <n-button
-            text
-            tag="a"
-            href="https://github.com/michaelildefonso"
-            target="_blank"
-            class="contact-link"
-          >
-            GitHub
-          </n-button>
-        </n-space>
+            <span class="dl-icon" aria-hidden="true">
+              <NIcon size="17"><LogoLinkedin /></NIcon>
+            </span>
+            <span class="dl-copy">
+              <span class="dl-label">LinkedIn</span>
+              <span class="dl-value">michael-ildefonso</span>
+            </span>
+          </a>
+          <a href="https://github.com/michaelildefonso" target="_blank" class="direct-link">
+            <span class="dl-icon" aria-hidden="true">
+              <NIcon size="17"><LogoGithub /></NIcon>
+            </span>
+            <span class="dl-copy">
+              <span class="dl-label">GitHub</span>
+              <span class="dl-value">michaelIldefonso</span>
+            </span>
+          </a>
+        </div>
       </div>
+
+      <form class="contact-form" @submit.prevent="sendEmail">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input
+            v-model="form.name"
+            class="form-input"
+            placeholder="Your name"
+            autocomplete="name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input
+            v-model="form.email"
+            type="email"
+            class="form-input"
+            placeholder="your@email.com"
+            autocomplete="email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea
+            v-model="form.message"
+            class="form-textarea"
+            placeholder="What's on your mind?"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
     </div>
   </section>
 </template>
 
 <style scoped>
-.section-contact {
-  min-height: 85vh;
-  padding: 4rem 2rem;
+.contact {
+  padding: 5rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.section-label {
-  font-family: monospace;
-  color: var(--accent);
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  margin-bottom: 2.5rem;
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
 }
 
-.section-title {
-  font-size: 2.5rem;
+.section-num {
+  font-family: monospace;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(129, 140, 248, 0.08);
+  line-height: 1;
+  letter-spacing: -2px;
+  user-select: none;
+}
+
+.section-tag {
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.contact-heading {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   margin-bottom: 1rem;
 }
 
-.section-description {
+.accent-word {
+  color: var(--accent);
+}
+
+.contact-desc {
   color: var(--text-muted);
   font-size: 1rem;
-  line-height: 1.7;
-  margin-bottom: 3rem;
-  max-width: 55ch;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
 }
 
-.contact-wrapper {
-  display: flex;
-  gap: 5rem;
-  align-items: flex-start;
-  max-width: 900px;
-}
-
-.contact-form {
-  flex: 1;
+.direct-links {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 0.75rem;
 }
 
-.submit-btn {
-  align-self: flex-start;
-  margin-top: 8px;
-  transition: all 0.3s ease;
+.direct-link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(129, 140, 248, 0.16);
+  background: rgba(13, 18, 32, 0.58);
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
-.submit-btn:hover {
+.direct-link:hover {
+  border-color: rgba(129, 140, 248, 0.42);
+  background: rgba(129, 140, 248, 0.08);
   transform: translateY(-2px);
 }
 
-.contact-links {
+.dl-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  background: rgba(129, 140, 248, 0.12);
+  border: 1px solid rgba(129, 140, 248, 0.25);
+}
+
+.dl-copy {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding-top: 8px;
+  gap: 2px;
 }
 
-.links-label {
-  font-size: 0.8rem;
+.dl-label {
+  font-family: monospace;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: var(--text-muted);
-  font-weight: 700;
-  margin-bottom: 4px;
+  color: var(--accent);
 }
 
-.contact-link {
-  color: var(--text-muted) !important;
-  font-size: 0.95rem;
+.dl-value {
+  font-size: 0.92rem;
+  color: var(--text);
   font-weight: 500;
-  transition: color 0.2s ease;
 }
 
-.contact-link:hover {
-  color: var(--accent) !important;
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
-@media (max-width: 1024px) {
-  .section-contact {
-    min-height: auto;
-    padding: 3rem 2rem;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(13, 18, 32, 0.8);
+  border: 1px solid rgba(129, 140, 248, 0.15);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  transition: all 0.2s;
+  resize: none;
+  outline: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--accent);
+  background: rgba(18, 25, 41, 0.9);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.15);
+}
+
+.form-submit {
+  align-self: flex-start;
+  padding: 0.8rem 2rem;
+  background: var(--accent);
+  color: #080b12;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font-body);
+}
+
+.form-submit:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(129, 140, 248, 0.3);
+}
+
+@media (max-width: 900px) {
+  .contact {
+    padding: 4rem 2rem;
   }
-  .contact-wrapper {
+  .contact-inner {
+    grid-template-columns: 1fr;
     gap: 3rem;
   }
 }
 
-@media (max-width: 768px) {
-  .section-contact {
-    min-height: auto;
-    padding: 2.5rem 1.5rem;
-  }
-  .section-title {
-    font-size: 2rem;
-  }
-  .section-description {
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
-  }
-  .contact-wrapper {
-    flex-direction: column;
-    gap: 2.5rem;
-    max-width: 100%;
-  }
-  .contact-form {
-    width: 100%;
-  }
-  .contact-links {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .section-contact {
-    min-height: auto;
-    padding: 2rem 1rem;
-  }
-  .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-  }
-  .section-description {
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-  }
-  .contact-wrapper {
-    gap: 1.5rem;
-  }
-  .contact-form {
-    gap: 16px;
-  }
-  .contact-links {
-    gap: 0.75rem;
-  }
-  .links-label {
-    font-size: 0.75rem;
-  }
-  .contact-link {
-    font-size: 0.9rem;
+@media (max-width: 600px) {
+  .contact {
+    padding: 3rem 1.25rem;
   }
 }
 </style>

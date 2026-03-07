@@ -1,132 +1,91 @@
 <script setup>
-import { NCard, NTag, NSpace, NIcon } from 'naive-ui'
-import {
-  CodeOutlined,
-  RocketOutlined,
-  ThunderboltOutlined,
-  LockOutlined,
-  EyeOutlined,
-  GlobalOutlined,
-  BuildOutlined,
-} from '@vicons/antd'
+// Skills section - no additional scripts needed
 </script>
 
 <template>
-  <section id="skills" class="section skills">
-    <n-p class="section-label">// what I'm good at</n-p>
-
-    <h2 class="section-title">Technical Proficiency</h2>
-
-    <div class="skills-group">
-      <h3 class="group-label">Core Engineering Stack</h3>
-      <div class="skills-cards">
-        <n-card embedded :bordered="false" class="skill-card">
-          <template #header>
-            <n-space align="center" :size="8">
-              <n-icon :size="20" :color="'var(--accent)'"><CodeOutlined /></n-icon>
-              <span>Languages & Runtimes</span>
-            </n-space>
-          </template>
-          <n-space>
-            <n-tag type="success">Python (py)</n-tag>
-            <n-tag type="success">JavaScript</n-tag>
-            <n-tag :bordered="false" class="ghost-tag">Pip / Venv</n-tag>
-            <n-tag :bordered="false" class="ghost-tag">HTML / CSS</n-tag>
-          </n-space>
-        </n-card>
-
-        <n-card embedded :bordered="false" class="skill-card">
-          <template #header>
-            <n-space align="center" :size="8">
-              <n-icon :size="20" :color="'var(--accent)'"><RocketOutlined /></n-icon>
-              <span>Frameworks</span>
-            </n-space>
-          </template>
-          <n-space>
-            <n-tag type="success">FastAPI</n-tag>
-            <n-tag type="success">Node.js / Express</n-tag>
-            <n-tag type="success">Vue 3 / Vite</n-tag>
-          </n-space>
-        </n-card>
-
-        <n-card embedded :bordered="false" class="skill-card">
-          <template #header>
-            <n-space align="center" :size="8">
-              <n-icon :size="20" :color="'var(--accent)'"><BuildOutlined /></n-icon>
-              <span>DevOps & Delivery</span>
-            </n-space>
-          </template>
-          <n-space>
-            <n-tag type="info">GitHub Actions (CI/CD)</n-tag>
-            <n-tag type="info">NPM / NPX</n-tag>
-            <n-tag type="info">Git / GitHub</n-tag>
-            <n-tag type="info">Railway / Vercel</n-tag>
-          </n-space>
-        </n-card>
-
-        <n-card embedded :bordered="false" class="skill-card exposure-card">
-          <template #header>
-            <n-space align="center" :size="8">
-              <n-icon :size="20" :color="'var(--text-muted)'"><EyeOutlined /></n-icon>
-              <span>Exposure & Prior Use</span>
-            </n-space>
-          </template>
-          <n-space>
-            <n-tag :bordered="false" class="ghost-tag">React Native</n-tag>
-            <n-tag :bordered="false" class="ghost-tag">React</n-tag>
-            <n-tag :bordered="false" class="ghost-tag">PHP / Laravel</n-tag>
-            <n-tag :bordered="false" class="ghost-tag">MySQL</n-tag>
-            <n-tag :bordered="false" class="ghost-tag">ESLint</n-tag>
-            <n-tag :bordered="false" class="ghost-tag">Pydantic</n-tag>
-          </n-space>
-        </n-card>
-      </div>
+  <section class="skills">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-tag">Skills</span>
     </div>
 
-    <div class="skills-grid-bottom">
-      <div class="skills-group">
-        <h3 class="group-label">
-          <n-space align="center" :size="8">
-            <n-icon :size="18" :color="'var(--accent)'"><ThunderboltOutlined /></n-icon>
-            <span>AI / Machine Learning</span>
-          </n-space>
-        </h3>
-        <n-space wrap>
-          <n-tag type="info">Fine-tuned Whisper</n-tag>
-          <n-tag type="info">Faster-whisper</n-tag>
-          <n-tag type="info">FFmpeg</n-tag>
-          <n-tag type="info" ghost>Google Colab</n-tag>
-          <n-tag type="info" ghost>HuggingFace</n-tag>
-        </n-space>
+    <div class="bento">
+      <!-- Languages -->
+      <div class="bento-card bento-sm">
+        <p class="card-label">Languages</p>
+        <div class="chip-list">
+          <span class="chip chip-primary">Python</span>
+          <span class="chip chip-primary">JavaScript</span>
+          <span class="chip chip-ghost">HTML / CSS</span>
+        </div>
       </div>
 
-      <div class="skills-group">
-        <h3 class="group-label">
-          <n-space align="center" :size="8">
-            <n-icon :size="18" :color="'var(--accent)'"><GlobalOutlined /></n-icon>
-            <span>Network & Cloud</span>
-          </n-space>
-        </h3>
-        <n-space wrap>
-          <n-tag ghost>DNS: ildf.site</n-tag>
-          <n-tag ghost>Cloudflare R2</n-tag>
-          <n-tag ghost>Modal</n-tag>
-          <n-tag ghost>CORS Management</n-tag>
-        </n-space>
+      <!-- Frameworks -->
+      <div class="bento-card bento-sm">
+        <p class="card-label">Frameworks</p>
+        <div class="chip-list">
+          <span class="chip chip-primary">FastAPI</span>
+          <span class="chip chip-primary">Node / Express</span>
+          <span class="chip chip-primary">Vue 3 / Vite</span>
+        </div>
       </div>
 
-      <div class="skills-group">
-        <h3 class="group-label">
-          <n-space align="center" :size="8">
-            <n-icon :size="18" :color="'var(--accent)'"><LockOutlined /></n-icon>
-            <span>Auth & Persistence</span>
-          </n-space>
-        </h3>
-        <n-space wrap>
-          <n-tag type="warning">PostgreSQL</n-tag>
-          <n-tag type="warning">SQLAlchemy</n-tag>
-          <n-tag type="warning" ghost>OAuth2 / JWT</n-tag>
-        </n-space>
+      <!-- DevOps -->
+      <div class="bento-card bento-sm">
+        <p class="card-label">DevOps &amp; Delivery</p>
+        <div class="chip-list">
+          <span class="chip chip-info">GitHub Actions</span>
+          <span class="chip chip-info">Git / GitHub</span>
+          <span class="chip chip-info">Railway / Vercel</span>
+        </div>
+      </div>
+
+      <!-- AI / ML Wide -->
+      <div class="bento-card bento-md">
+        <p class="card-label">AI / Machine Learning</p>
+        <div class="chip-list">
+          <span class="chip chip-accent">Fine-tuned Whisper</span>
+          <span class="chip chip-accent">faster-whisper</span>
+          <span class="chip chip-accent">FFmpeg</span>
+          <span class="chip chip-ghost">HuggingFace</span>
+          <span class="chip chip-ghost">Google Colab</span>
+        </div>
+      </div>
+
+      <!-- Auth & DB -->
+      <div class="bento-card bento-sm">
+        <p class="card-label">Auth &amp; Persistence</p>
+        <div class="chip-list">
+          <span class="chip chip-warn">PostgreSQL</span>
+          <span class="chip chip-warn">SQLAlchemy</span>
+          <span class="chip chip-ghost">OAuth2 / JWT</span>
+        </div>
+      </div>
+
+      <!-- Cloud + Exposure Row -->
+      <div class="bento-pair">
+        <div class="bento-card">
+          <p class="card-label">Cloud &amp; Network</p>
+          <div class="chip-list">
+            <span class="chip chip-ghost">Cloudflare R2</span>
+            <span class="chip chip-ghost">Modal</span>
+            <span class="chip chip-ghost">CDN Caching</span>
+            <span class="chip chip-ghost">DNS / SSL</span>
+            <span class="chip chip-ghost">CORS</span>
+          </div>
+        </div>
+
+        <div class="bento-card exposure">
+          <p class="card-label">Exposure &amp; Prior Use</p>
+          <div class="chip-list">
+            <span class="chip chip-ghost">React Native</span>
+            <span class="chip chip-ghost">React</span>
+            <span class="chip chip-ghost">PHP / Laravel</span>
+            <span class="chip chip-ghost">MySQL</span>
+            <span class="chip chip-ghost">Pydantic</span>
+            <span class="chip chip-ghost">ESLint</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -134,122 +93,164 @@ import {
 
 <style scoped>
 .skills {
-  padding: 2rem 2rem;
-}
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: var(--text);
-}
-.group-label {
-  font-size: 1.1rem;
-  margin-bottom: 1.25rem;
-  opacity: 0.9;
-  color: var(--text);
+  padding: 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.skills-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  margin-bottom: 40px;
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
 }
 
-.skill-card {
-  transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.03);
-  height: 100%;
-  margin: 0;
-}
-
-.skill-card:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.exposure-card {
-  border: 1px dashed rgba(255, 255, 255, 0.15) !important;
-  opacity: 0.8;
-}
-
-.ghost-tag {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  color: #999 !important;
-}
-
-.skills-grid-bottom {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
-}
-.section-label {
-  color: var(--accent);
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  margin-bottom: 2.5rem;
+.section-num {
   font-family: monospace;
-}
-.section-label-mobile {
-  margin-left: 1rem;
-}
-.skills-group {
-  margin-bottom: 24px;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(129, 140, 248, 0.08);
+  line-height: 1;
+  letter-spacing: -2px;
+  user-select: none;
 }
 
-@media (max-width: 1200px) {
-  .skills-cards {
+.section-tag {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.bento-card {
+  padding: 1.75rem;
+  border-radius: 16px;
+  border: 1px solid rgba(129, 140, 248, 0.12);
+  background: rgba(13, 18, 32, 0.8);
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.bento-card:hover {
+  border-color: rgba(129, 140, 248, 0.28);
+  background: rgba(18, 25, 41, 0.9);
+  transform: translateY(-3px);
+}
+
+.bento-md {
+  grid-column: span 2;
+}
+.bento-wide {
+  grid-column: span 2;
+}
+
+.bento-full {
+  grid-column: 1 / -1;
+}
+
+.bento-pair {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.exposure {
+  border-style: dashed;
+  opacity: 0.9;
+  background: linear-gradient(180deg, rgba(129, 140, 248, 0.06), rgba(13, 18, 32, 0.82));
+}
+
+.card-label {
+  font-family: monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.chip-primary {
+  background: var(--chip-primary-bg);
+  color: var(--accent);
+  border: 1px solid var(--chip-primary-border);
+}
+
+.chip-accent {
+  background: var(--chip-accent-bg);
+  color: var(--chip-accent);
+  border: 1px solid var(--chip-accent-border);
+}
+
+.chip-info {
+  background: var(--chip-info-bg);
+  color: var(--chip-info);
+  border: 1px solid var(--chip-info-border);
+}
+
+.chip-warn {
+  background: var(--chip-warn-bg);
+  color: var(--chip-warn);
+  border: 1px solid var(--chip-warn-border);
+}
+
+.chip-ghost {
+  background: var(--chip-ghost-bg);
+  color: var(--text-muted);
+  border: 1px solid var(--chip-ghost-border);
+}
+
+@media (max-width: 900px) {
+  .skills {
+    padding: 4rem 2rem;
+  }
+  .bento {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-
-@media (max-width: 768px) {
-  .skills {
-    padding: 2rem 1.5rem;
+  .bento-wide {
+    grid-column: span 2;
   }
-  .skills-cards {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-  .skills-grid-bottom {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .section-title {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  .group-label {
-    font-size: 1rem;
-  }
-  .skill-card {
-    padding: 1rem;
+  .bento-full {
+    grid-column: span 2;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .skills {
-    padding: 1.5rem 1rem;
+    padding: 3rem 1.25rem;
   }
-  .section-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  .group-label {
-    font-size: 0.95rem;
-    margin-bottom: 0.75rem;
-  }
-  .skills-cards {
+  .bento {
     grid-template-columns: 1fr;
-    gap: 10px;
-    margin-bottom: 20px;
   }
-  .skill-card {
-    padding: 0.75rem;
+  .bento-md,
+  .bento-wide,
+  .bento-full {
+    grid-column: span 1;
   }
-  .skills-grid-bottom {
-    gap: 16px;
+  .bento-pair {
+    grid-template-columns: 1fr;
   }
 }
 </style>

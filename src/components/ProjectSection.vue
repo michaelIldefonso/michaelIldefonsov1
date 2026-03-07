@@ -3,17 +3,23 @@ import ProjectCard from './ProjectCard.vue'
 
 const projects = [
   {
-    title: 'Rekapo (Capstone Thesis)',
+    title: 'Rekapo',
+    subtitle: 'Capstone Thesis',
     description:
       'Standard STT models fail on Taglish — a code-switched mix of Tagalog and English spoken by 100M+ Filipinos. I built and curated a 20-hour bilingual dataset from scratch, then fine-tuned Whisper-small to outperform the larger Whisper-Medium baseline. The tradeoff: float16 quantization to hit acceptable inference latency on a constrained deployment budget, without sacrificing accuracy.',
+    semanticTags: [
+      { label: 'AI', tone: 'accent' },
+      { label: 'Auth', tone: 'warn' },
+      { label: 'Infra', tone: 'info' },
+    ],
     techStack: [
       'Python',
       'FastAPI',
-      'faster-whisper (float16 GPU)',
+      'faster-whisper',
       'Google OAuth 2.0',
       'FFmpeg',
-      'NLLB-200 1.3B · CTranslate2 Float16',
-      'Qwen2.5-1.5B · NF4 4-bit GPU',
+      'NLLB-200 1.3B',
+      'Qwen2.5-1.5B',
       'React Native',
       'GitHub Actions',
     ],
@@ -29,9 +35,14 @@ const projects = [
     ],
   },
   {
-    title: 'bisHash (PyPI Library)',
+    title: 'bisHash',
+    subtitle: 'PyPI Library',
     description:
       "bcrypt is the default — but it has no answer for database breaches exposing the pepper. I published bisHash to fill that gap: Argon2id with server-side peppering, IP-based rate limiting, and brute-force lockout built into a single importable module. The design goal was zero-config security for developers who shouldn't have to research cryptography to build a login flow.",
+    semanticTags: [
+      { label: 'Auth', tone: 'warn' },
+      { label: 'Infra', tone: 'info' },
+    ],
     techStack: [
       'Python',
       'Argon2',
@@ -47,9 +58,14 @@ const projects = [
     liveUrl: [{ url: 'https://pypi.org/project/bisHash/', label: 'PyPI Package' }],
   },
   {
-    title: 'Progresstify (Systems Project)',
+    title: 'Progresstify',
+    subtitle: 'Systems Project',
     description:
       'The core challenge was session security across multiple OAuth providers without a managed auth service. I implemented JWT with multi-provider OAuth 2.0 (Google/GitHub) from scratch, using serverless PostgreSQL on Neon.tech to keep the data layer stateless and independently scalable. Deployed across Vercel and Render to separate frontend and API concerns cleanly.',
+    semanticTags: [
+      { label: 'Auth', tone: 'warn' },
+      { label: 'Infra', tone: 'info' },
+    ],
     techStack: [
       'Node.js',
       'Express',
@@ -60,102 +76,115 @@ const projects = [
       'Vercel',
       'Render',
       'Vite',
-      'REST API',
     ],
     githubUrl: [
       { url: 'https://github.com/michaelIldefonso/Progresstify-BackEnd', label: 'Backend' },
       { url: 'https://github.com/michaelIldefonso/Progresstify-FrontEnd', label: 'Frontend' },
     ],
-    liveUrl: [], // Empty array is fine with the new logic
+    liveUrl: [],
   },
 ]
 </script>
 
 <template>
-  <section id="projects" class="section-projects">
-    <n-p class="section-label">// what I've built</n-p>
-    <h2 class="section-title">Featured Projects</h2>
-
-    <div class="projects-grid">
-      <ProjectCard v-for="project in projects" :key="project.title" v-bind="project" />
+  <section class="projects">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-tag">Projects</span>
     </div>
 
-    <div class="view-more-container">
-      <n-divider title-placement="center">
-        <n-text depth="3" class="divider-text">Curious about my other work?</n-text>
-      </n-divider>
+    <div class="projects-list">
+      <ProjectCard
+        v-for="(project, index) in projects"
+        :key="project.title"
+        v-bind="project"
+        :index="index"
+      />
+    </div>
 
-      <n-button
-        secondary
-        round
-        size="large"
-        tag="a"
+    <div class="cta-row">
+      <a
         href="https://github.com/michaelIldefonso?tab=repositories"
         target="_blank"
-        class="github-cta"
+        class="cta-github"
       >
-        <template #icon>
-          <span>📂</span>
-        </template>
-        Explore all repositories on GitHub
-      </n-button>
+        View all repositories on GitHub →
+      </a>
     </div>
   </section>
 </template>
 
 <style scoped>
-.section-projects {
-  padding: 4rem 2rem;
-  max-width: 1400px;
+.projects {
+  padding: 5rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 2.5rem;
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+.section-num {
+  font-family: monospace;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(129, 140, 248, 0.08);
+  line-height: 1;
+  letter-spacing: -2px;
+  user-select: none;
+}
+
+.section-tag {
+  font-size: 1.75rem;
+  font-weight: 700;
   color: var(--text);
-  text-align: center;
+  letter-spacing: -0.02em;
 }
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  width: 100%;
-}
-.view-more-container {
-  margin-top: 4rem;
-  text-align: center;
+
+.projects-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 1.5rem;
 }
 
-.divider-text {
-  font-size: 0.9rem;
-  font-style: italic;
-  letter-spacing: 1px;
+.cta-row {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
 }
 
-.github-cta {
-  transition: all 0.3s ease;
+.cta-github {
+  font-size: 0.95rem;
   font-weight: 600;
-}
-
-.github-cta:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(66, 184, 131, 0.2);
-}
-.section-label {
-  font-family: monospace;
   color: var(--accent);
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  margin-bottom: 2.5rem;
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  border: 1px solid rgba(129, 140, 248, 0.55);
+  background: rgba(129, 140, 248, 0.09);
+  border-radius: 8px;
+  transition: all 0.25s ease;
 }
 
-@media (max-width: 768px) {
-  .section-projects {
-    padding: 4rem 1.5rem;
+.cta-github:hover {
+  background: rgba(129, 140, 248, 0.16);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.2);
+}
+
+@media (max-width: 900px) {
+  .projects {
+    padding: 4rem 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects {
+    padding: 3rem 1.25rem;
   }
 }
 </style>

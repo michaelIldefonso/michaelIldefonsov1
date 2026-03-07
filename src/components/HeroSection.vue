@@ -1,63 +1,99 @@
 <script setup>
-// import { LogoGithub, LogoLinkedin, CodeSlash } from '@vicons/ionicons5'
-import { ChevronDoubleDown20Filled } from '@vicons/fluent'
-const name = 'Michael S. Ildefonso'
-const title = 'Full-Stack Developer'
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const scrollToSection = (e, sectionId) => {
-  e.preventDefault()
-  const element = document.querySelector(sectionId)
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' })
+const taglines = [
+  'I build things that work, then make them better.',
+  'Backend-first. Always learning. Always shipping.',
+  'I pick the hardest option and figure it out.',
+]
+
+const displayedTagline = ref('')
+
+let timeoutId = null
+let taglineIndex = 0
+let charIndex = 0
+let isDeleting = false
+
+const TYPE_SPEED = 52
+const DELETE_SPEED = 28
+const FULL_TEXT_PAUSE = 1400
+const NEXT_TAGLINE_DELAY = 320
+
+const tickTagline = () => {
+  const activeTagline = taglines[taglineIndex]
+
+  if (!isDeleting) {
+    charIndex = Math.min(charIndex + 1, activeTagline.length)
+    displayedTagline.value = activeTagline.slice(0, charIndex)
+
+    if (charIndex === activeTagline.length) {
+      isDeleting = true
+      timeoutId = setTimeout(tickTagline, FULL_TEXT_PAUSE)
+      return
+    }
+
+    timeoutId = setTimeout(tickTagline, TYPE_SPEED)
+    return
   }
+
+  charIndex = Math.max(charIndex - 1, 0)
+  displayedTagline.value = activeTagline.slice(0, charIndex)
+
+  if (charIndex === 0) {
+    isDeleting = false
+    taglineIndex = (taglineIndex + 1) % taglines.length
+    timeoutId = setTimeout(tickTagline, NEXT_TAGLINE_DELAY)
+    return
+  }
+
+  timeoutId = setTimeout(tickTagline, DELETE_SPEED)
+}
+
+onMounted(() => {
+  displayedTagline.value = ''
+  timeoutId = setTimeout(tickTagline, 350)
+})
+
+onUnmounted(() => {
+  if (timeoutId) {
+    clearTimeout(timeoutId)
+  }
+})
+
+const scrollToSection = (e, id) => {
+  e.preventDefault()
+  document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 
 <template>
-  <div class="gradient-line"></div>
-
-  <!-- grid here -->
-  <section class="section hero">
+  <section class="hero" id="hero">
     <div class="hero-content">
-      <n-text class="tagline">Hey, I'm</n-text>
-      <n-h1 id="name">{{ name }}</n-h1>
-      <n-h2 id="title">{{ title }}</n-h2>
-      <n-text id="tagline"> Backend-first. Full-stack in progress.</n-text>
-    </div>
-    <div class="hero-actions">
-      <div class="hero-actions-buttons">
-        <n-button
-          tag="a"
-          href="#contact"
-          @click="(e) => scrollToSection(e, '#contact')"
-          type="primary"
-          size="large"
-          >Contact Me</n-button
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1 class="hero-name">Michael<br />Ildefonso</h1>
+      <h2 class="hero-title">Full-Stack Developer</h2>
+      <div class="hero-sub-wrap" aria-live="polite">
+        <p class="hero-sub">
+          {{ displayedTagline }}<span class="typing-caret" aria-hidden="true"></span>
+        </p>
+      </div>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary" @click="(e) => scrollToSection(e, '#contact')"
+          >Get in touch</a
         >
-        <n-button
-          tag="a"
-          href="#projects"
-          @click="(e) => scrollToSection(e, '#projects')"
-          size="large"
-          >View Projects</n-button
+        <a href="#projects" class="btn-ghost" @click="(e) => scrollToSection(e, '#projects')"
+          >View work ↓</a
         >
       </div>
-      <a href="#" class="hero-cv-link">View CV →</a>
-    </div>
-
-    <div class="hero-scroll">
-      <n-button text style="font-size: 24px">
-        <ChevronDoubleDown20Filled :width="34" :height="34" />
-      </n-button>
     </div>
   </section>
 </template>
 
 <style scoped>
-@keyframes fadeInUp {
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -65,179 +101,177 @@ const scrollToSection = (e, sectionId) => {
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes bounce {
+@keyframes caretBlink {
   0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
   100% {
-    transform: translateY(0);
+    opacity: 0;
   }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-#name {
-  font-size: 4rem !important;
-  font-weight: 800 !important;
-  margin: 0 !important;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
-  letter-spacing: -0.03em;
-}
-
-#title {
-  font-size: 1.8rem !important;
-  color: var(--accent) !important;
-  margin: 0 !important;
-  animation: fadeInUp 0.8s ease-out 0.4s both;
-}
-
-#tagline {
-  color: var(--text-primary) !important;
-  font-size: 1.1rem !important;
-  line-height: 1.7 !important;
-  max-width: 70ch !important;
-  font-weight: 400 !important;
-  animation: fadeInUp 0.8s ease-out 0.6s both;
-}
-
-.tagline {
-  font-size: 1rem !important;
-  color: var(--text-muted) !important;
-  animation: fadeInUp 0.8s ease-out both;
 }
 
 .hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 0 80px;
-  justify-content: center;
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-left: 10rem;
-  padding-right: 4rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-.hero-social {
-  display: none;
+  padding: calc(var(--nav-height) + 6rem) 5rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin: 8rem 0;
-  position: relative;
-  z-index: 1;
+  gap: 1rem;
+  max-width: 100%;
 }
 
-.hero-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-top: 2rem;
-  animation: fadeInUp 0.8s ease-out 0.8s both;
-}
-
-.hero-actions-buttons {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.hero-actions-buttons :deep(button) {
-  transition: all 0.3s ease;
-}
-
-.hero-actions-buttons :deep(button:hover) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(129, 140, 248, 0.2);
-}
-
-.hero-cv-link {
+.hero-greeting {
+  font-family: monospace;
+  font-size: 0.95rem;
   color: var(--accent);
-  text-decoration: none;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: fadeUp 0.8s ease both;
+}
+
+.hero-name {
+  font-size: clamp(4rem, 8vw, 7rem);
+  max-width: 700px; /* stops it from going too wide vs the content below */
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  animation: fadeUp 0.8s ease 0.1s both;
+  background: linear-gradient(135deg, #e0e7ff, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-title {
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
   font-weight: 500;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  display: inline-block;
-  width: fit-content;
+  color: var(--accent);
+  animation: fadeUp 0.8s ease 0.2s both;
 }
 
-.hero-cv-link:hover {
-  opacity: 0.8;
-  transform: translateX(4px);
-}
-
-.hero-scroll {
+.hero-sub-wrap {
+  max-width: 60ch;
+  min-height: 3.6rem;
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-sub {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  padding-left: 1rem;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  letter-spacing: 0.01em;
+  animation: fadeUp 0.8s ease 0.3s both;
+  text-wrap: balance;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: auto;
-  animation: fadeIn 1s ease-out 1s both;
+  gap: 0.25rem;
 }
 
-.hero-scroll :deep(button) {
-  animation: bounce 2s infinite;
-  transition: all 0.3s ease;
+.typing-caret {
+  width: 2px;
+  height: 1.05em;
+  background: var(--accent);
+  border-radius: 1px;
+  display: inline-block;
+  animation: caretBlink 1s steps(1, end) infinite;
 }
 
-.hero-scroll :deep(button:hover) {
-  animation: none;
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.8s ease 0.4s both;
 }
 
-@media (max-width: 768px) {
+.btn-primary {
+  padding: 0.75rem 1.75rem;
+  background: var(--accent);
+  color: #080b12;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  letter-spacing: 0.3px;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(129, 140, 248, 0.3);
+}
+
+.btn-ghost {
+  padding: 0.75rem 1.75rem;
+  border: 1px solid rgba(129, 140, 248, 0.35);
+  color: var(--text);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+.btn-ghost:hover {
+  background: rgba(129, 140, 248, 0.08);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 960px) {
   .hero {
-    padding: 0 24px;
+    padding: calc(var(--nav-height) + 4rem) 2rem 4rem;
+    text-align: center;
   }
   .hero-content {
-    margin: 4rem 0;
-    gap: 8px;
+    align-items: center;
+    max-width: 100%;
   }
-  #name {
-    font-size: 2.5rem !important;
+  .hero-sub-wrap {
+    max-width: 100%;
+    min-height: 4.2rem;
   }
-  .hero {
-    min-height: 70vh;
+  .hero-sub {
+    border-left: none;
+    border-top: 2px solid color-mix(in srgb, var(--accent) 55%, transparent);
+    padding-left: 0;
+    padding-top: 0.75rem;
   }
-  .hero-social {
-    display: block;
-  }
-  .hero-scroll {
-    display: none;
+  .hero-ctas {
+    justify-content: center;
   }
 }
+
 @media (max-width: 480px) {
-  #name {
-    font-size: 2rem !important;
-  }
-  #title {
-    font-size: 1.4rem !important;
-  }
-  #tagline {
-    font-size: 1rem !important;
-  }
   .hero {
-    min-height: 70vh;
+    padding: calc(var(--nav-height) + 2rem) 1.25rem 3rem;
   }
-  .hero-social {
-    display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-greeting,
+  .hero-name,
+  .hero-title,
+  .hero-sub,
+  .hero-ctas {
+    animation: none !important;
   }
-  .hero-scroll {
-    display: none;
+  .btn-primary:hover,
+  .btn-ghost:hover {
+    transform: none;
+  }
+
+  .typing-caret {
+    animation: none;
   }
 }
 </style>
