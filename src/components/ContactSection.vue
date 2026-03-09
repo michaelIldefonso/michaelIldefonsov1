@@ -1,10 +1,9 @@
+<!-- ContactSection.vue -->
 <script setup>
 import { reactive, ref } from 'vue'
-import { NIcon } from 'naive-ui'
 import { MailOutline, LogoLinkedin, LogoGithub } from '@vicons/ionicons5'
 
 const form = reactive({ name: '', email: '', message: '' })
-
 const isSubmitting = ref(false)
 const submitted = ref(false)
 
@@ -12,8 +11,6 @@ function sendEmail() {
   if (isSubmitting.value) return
   isSubmitting.value = true
   submitted.value = false
-
-  // Placeholder for real email handling – simulate a quick send.
   setTimeout(() => {
     form.name = ''
     form.email = ''
@@ -22,283 +19,142 @@ function sendEmail() {
     submitted.value = true
   }, 400)
 }
+
+const links = [
+  {
+    href: 'mailto:michaelildefonso20@gmail.com',
+    label: 'Email',
+    value: 'michaelildefonso20@gmail.com',
+    icon: MailOutline,
+  },
+  {
+    href: 'https://www.linkedin.com/in/michael-ildefonso-62ba77267',
+    label: 'LinkedIn',
+    value: 'michael-ildefonso',
+    icon: LogoLinkedin,
+    external: true,
+  },
+  {
+    href: 'https://github.com/michaelildefonso',
+    label: 'GitHub',
+    value: 'michaelIldefonso',
+    icon: LogoGithub,
+    external: true,
+  },
+]
 </script>
 
 <template>
-  <section class="contact section-shell">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <span class="section-tag">Contact</span>
-    </div>
-    <p class="section-subtitle">
-      Prefer a direct email, social link, or a quick form? Reach out however is easiest — I usually reply within a day.
-    </p>
+  <section
+    id="contact"
+    class="relative max-w-6xl mx-auto px-6 py-16 mt-6 overflow-hidden"
+  >
+    <!-- decorative lines -->
+    <div
+      class="pointer-events-none absolute -left-12 top-10 h-0.5 w-24 bg-linear-to-r from-white to-transparent"
+    ></div>
+    <div
+      class="pointer-events-none absolute -right-8 bottom-6 h-24 w-24 border border-border mix-blend-color-burn opacity-40"
+    ></div>
 
-    <div class="contact-inner">
-      <div class="contact-intro">
-        <h2 class="contact-heading">
-          Let's build something <span class="accent-word">together</span>
-        </h2>
-        <p class="contact-desc">
-          Have a project in mind, a role you think I'd fit, or just want to connect? Drop me a
-          message — I'll get back to you promptly.
-        </p>
-        <div class="direct-links">
-          <a href="mailto:michaelildefonso20@gmail.com" class="direct-link">
-            <span class="dl-icon" aria-hidden="true">
-              <NIcon size="17"><MailOutline /></NIcon>
-            </span>
-            <span class="dl-copy">
-              <span class="dl-label">Email</span>
-              <span class="dl-value">michaelildefonso20@gmail.com</span>
-            </span>
-          </a>
+    <!-- section header -->
+    <div class="flex items-center gap-4 border-b border-border pb-4 mb-10">
+      <span class="font-mono text-xs uppercase tracking-[0.7em] text-text-muted">04</span>
+      <span class="text-xs uppercase tracking-[0.5em] text-text-muted">Contact</span>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-16">
+      <!-- left: intro + links -->
+      <div class="flex flex-col gap-8">
+        <div class="flex flex-col gap-3">
+          <h2 class="text-3xl font-black text-text leading-tight">
+            Let's build something <span class="text-white font-black">together</span>
+          </h2>
+          <p class="text-text-secondary text-sm leading-relaxed">
+            Have a project in mind, a role you think I'd fit, or just want to connect? Drop me a
+            message — I'll get back to you promptly.
+          </p>
+        </div>
+
+        <!-- direct links -->
+        <div class="flex flex-col gap-3">
           <a
-            href="https://www.linkedin.com/in/michael-ildefonso-62ba77267"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="direct-link"
+            v-for="link in links"
+            :key="link.label"
+            :href="link.href"
+            :target="link.external ? '_blank' : undefined"
+            :rel="link.external ? 'noopener noreferrer' : undefined"
+            class="flex items-center gap-4 border border-border p-4 hover:border-border-strong transition-colors duration-200 group"
           >
-            <span class="dl-icon" aria-hidden="true">
-              <NIcon size="17"><LogoLinkedin /></NIcon>
-            </span>
-            <span class="dl-copy">
-              <span class="dl-label">LinkedIn</span>
-              <span class="dl-value">michael-ildefonso</span>
-            </span>
-          </a>
-          <a
-            href="https://github.com/michaelildefonso"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="direct-link"
-          >
-            <span class="dl-icon" aria-hidden="true">
-              <NIcon size="17"><LogoGithub /></NIcon>
-            </span>
-            <span class="dl-copy">
-              <span class="dl-label">GitHub</span>
-              <span class="dl-value">michaelIldefonso</span>
-            </span>
+            <component
+              :is="link.icon"
+              class="w-4 h-4 text-text-muted group-hover:text-text transition-colors duration-200 shrink-0"
+            />
+            <div class="flex flex-col gap-0.5">
+              <span class="font-mono text-[10px] uppercase tracking-widest text-text-muted">{{
+                link.label
+              }}</span>
+              <span class="text-sm text-text">{{ link.value }}</span>
+            </div>
           </a>
         </div>
       </div>
 
-      <form class="contact-form" @submit.prevent="sendEmail">
-        <div class="form-group">
-          <label class="form-label">Name</label>
+      <!-- right: form -->
+      <form class="flex flex-col gap-5" @submit.prevent="sendEmail">
+        <div class="flex flex-col gap-1.5">
+          <label class="font-mono text-[10px] uppercase tracking-widest text-text-muted"
+            >Name</label
+          >
           <input
             v-model="form.name"
-            class="form-input"
+            class="bg-[#05070b] border border-border text-text text-sm px-4 py-2.5 placeholder:text-text-muted focus:outline-none focus:border-border-strong transition-colors duration-200"
             placeholder="Your name"
             autocomplete="name"
             required
           />
         </div>
-        <div class="form-group">
-          <label class="form-label">Email</label>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="font-mono text-[10px] uppercase tracking-widest text-text-muted"
+            >Email</label
+          >
           <input
             v-model="form.email"
             type="email"
-            class="form-input"
+            class="bg-[#05070b] border border-border text-text text-sm px-4 py-2.5 placeholder:text-text-muted focus:outline-none focus:border-border-strong transition-colors duration-200"
             placeholder="your@email.com"
             autocomplete="email"
             required
           />
         </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="font-mono text-[10px] uppercase tracking-widest text-text-muted"
+            >Message</label
+          >
           <textarea
             v-model="form.message"
-            class="form-textarea"
+            class="bg-[#05070b] border border-border text-text text-sm px-4 py-2.5 placeholder:text-text-muted focus:outline-none focus:border-border-strong transition-colors duration-200 resize-none"
             placeholder="What's on your mind?"
             rows="5"
             required
           ></textarea>
         </div>
-        <button type="submit" class="form-submit" :disabled="isSubmitting">
+
+        <button
+          type="submit"
+          :disabled="isSubmitting"
+          class="font-mono text-xs uppercase tracking-widest border border-accent text-accent px-5 py-3 hover:bg-accent hover:text-black transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
           <span v-if="!isSubmitting">Send Message →</span>
           <span v-else>Sending…</span>
         </button>
-        <p v-if="submitted" class="form-success" role="status">
-          Thanks for reaching out — I’ve received your message and will get back to you shortly.
+
+        <p v-if="submitted" class="font-mono text-xs text-text-muted" role="status">
+          ✓ Message received — I'll get back to you shortly.
         </p>
       </form>
     </div>
   </section>
 </template>
-
-<style scoped>
-.contact-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: start;
-}
-
-.contact-heading {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 800;
-  color: var(--text);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  margin-bottom: 1rem;
-}
-
-.accent-word {
-  color: var(--accent);
-}
-
-.contact-desc {
-  color: var(--text-muted);
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
-}
-
-.direct-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.direct-link {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  padding: 1rem 1.25rem;
-  border-radius: 10px;
-  border: 1px solid rgba(129, 140, 248, 0.16);
-  background: rgba(13, 18, 32, 0.58);
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.direct-link:hover {
-  border-color: rgba(129, 140, 248, 0.42);
-  background: rgba(129, 140, 248, 0.08);
-  transform: translateY(-2px);
-}
-
-.dl-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent);
-  background: rgba(129, 140, 248, 0.12);
-  border: 1px solid rgba(129, 140, 248, 0.25);
-}
-
-.dl-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.dl-label {
-  font-family: monospace;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--accent);
-}
-
-.dl-value {
-  font-size: 0.92rem;
-  color: var(--text);
-  font-weight: 500;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-}
-
-.form-input,
-.form-textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background: rgba(13, 18, 32, 0.8);
-  border: 1px solid rgba(129, 140, 248, 0.15);
-  border-radius: 8px;
-  color: var(--text);
-  font-size: 0.95rem;
-  font-family: var(--font-body);
-  transition: all 0.2s;
-  resize: none;
-  outline: none;
-}
-
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: var(--text-muted);
-}
-
-.form-input:focus,
-.form-textarea:focus {
-  border-color: var(--accent);
-  background: rgba(18, 25, 41, 0.9);
-  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.08);
-}
-
-.form-submit {
-  align-self: flex-start;
-  padding: 0.8rem 2rem;
-  background: var(--accent);
-  color: #080b12;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  font-family: var(--font-body);
-}
-
-.form-submit:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(129, 140, 248, 0.3);
-}
-
-.form-submit:disabled {
-  cursor: default;
-  opacity: 0.75;
-  box-shadow: none;
-  transform: none;
-}
-
-.form-success {
-  margin-top: 0.75rem;
-  font-size: 0.9rem;
-  color: var(--accent);
-}
-
-@media (max-width: 900px) {
-  .contact-inner {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-}
-
-@media (max-width: 600px) {
-}
-</style>

@@ -1,217 +1,99 @@
 <script setup>
-// Skills section - no additional scripts needed
+const skills = [
+  {
+    label: 'Languages',
+    tier: 'solid',
+    chips: ['Python', 'JavaScript', 'HTML / CSS'],
+  },
+  {
+    label: 'Frameworks',
+    tier: 'solid',
+    chips: ['FastAPI', 'Node / Express', 'Vue 3 / Vite'],
+  },
+  {
+    label: 'DevOps & Delivery',
+    tier: 'solid',
+    chips: ['GitHub Actions', 'Git / GitHub', 'Railway / Vercel'],
+  },
+  {
+    label: 'AI / Machine Learning',
+    tier: 'solid',
+    wide: true,
+    chips: ['Fine-tuned Whisper', 'faster-whisper', 'FFmpeg', 'HuggingFace', 'Google Colab'],
+  },
+  {
+    label: 'Auth & Persistence',
+    tier: 'solid',
+    chips: ['PostgreSQL', 'SQLAlchemy', 'OAuth2 / JWT'],
+  },
+  {
+    label: 'Cloud & Network',
+    tier: 'exposure',
+    chips: ['Cloudflare R2', 'Modal', 'CDN Caching', 'DNS / SSL', 'CORS'],
+  },
+  {
+    label: 'Exposure & Prior Use',
+    tier: 'exposure',
+    wide: true,
+    chips: ['React Native', 'React', 'PHP / Laravel', 'MySQL', 'Pydantic', 'ESLint'],
+  },
+]
 </script>
 
 <template>
-  <section class="skills section-shell">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <span class="section-tag">Skills</span>
+  <section
+    id="skills"
+    class="relative max-w-6xl mx-auto px-6 py-16 mt-6 overflow-hidden"
+  >
+    <!-- decorative lines -->
+    <div
+      class="pointer-events-none absolute -left-12 top-10 h-0.5 w-24 bg-linear-to-r from-white to-transparent"
+    ></div>
+    <div
+      class="pointer-events-none absolute -right-8 bottom-6 h-24 w-24 border border-border mix-blend-color-burn opacity-40"
+    ></div>
+
+    <!-- section header -->
+    <div class="flex items-center justify-between gap-4 border-b border-border pb-4 mb-10">
+      <div class="flex items-center gap-3">
+        <span class="font-mono text-xs uppercase tracking-[0.7em] text-text-muted">02</span>
+        <span class="text-xs uppercase tracking-[0.5em] text-text-muted">Skills</span>
+      </div>
     </div>
-    <p class="section-subtitle">
-      The tools and platforms I reach for most, with solid stacks in color and prior exposure in dashed cards and muted chips.
+
+    <p class="text-text-muted text-xs font-mono uppercase tracking-widest mb-10">
+      Solid stacks in full color · prior exposure in muted chips
     </p>
 
-    <div class="bento">
-      <!-- Languages -->
-      <div class="bento-card bento-sm">
-        <p class="card-label">Languages</p>
-        <div class="chip-list">
-          <span class="chip chip-primary">Python</span>
-          <span class="chip chip-primary">JavaScript</span>
-          <span class="chip chip-ghost">HTML / CSS</span>
-        </div>
-      </div>
-
-      <!-- Frameworks -->
-      <div class="bento-card bento-sm">
-        <p class="card-label">Frameworks</p>
-        <div class="chip-list">
-          <span class="chip chip-primary">FastAPI</span>
-          <span class="chip chip-primary">Node / Express</span>
-          <span class="chip chip-primary">Vue 3 / Vite</span>
-        </div>
-      </div>
-
-      <!-- DevOps -->
-      <div class="bento-card bento-sm">
-        <p class="card-label">DevOps &amp; Delivery</p>
-        <div class="chip-list">
-          <span class="chip chip-info">GitHub Actions</span>
-          <span class="chip chip-info">Git / GitHub</span>
-          <span class="chip chip-info">Railway / Vercel</span>
-        </div>
-      </div>
-
-      <!-- AI / ML Wide -->
-      <div class="bento-card bento-md">
-        <p class="card-label">AI / Machine Learning</p>
-        <div class="chip-list">
-          <span class="chip chip-accent">Fine-tuned Whisper</span>
-          <span class="chip chip-accent">faster-whisper</span>
-          <span class="chip chip-accent">FFmpeg</span>
-          <span class="chip chip-ghost">HuggingFace</span>
-          <span class="chip chip-ghost">Google Colab</span>
-        </div>
-      </div>
-
-      <!-- Auth & DB -->
-      <div class="bento-card bento-sm">
-        <p class="card-label">Auth &amp; Persistence</p>
-        <div class="chip-list">
-          <span class="chip chip-warn">PostgreSQL</span>
-          <span class="chip chip-warn">SQLAlchemy</span>
-          <span class="chip chip-ghost">OAuth2 / JWT</span>
-        </div>
-      </div>
-
-      <!-- Cloud + Exposure Row -->
-      <div class="bento-pair">
-        <div class="bento-card">
-          <p class="card-label">Cloud &amp; Network</p>
-          <div class="chip-list">
-            <span class="chip chip-ghost">Cloudflare R2</span>
-            <span class="chip chip-ghost">Modal</span>
-            <span class="chip chip-ghost">CDN Caching</span>
-            <span class="chip chip-ghost">DNS / SSL</span>
-            <span class="chip chip-ghost">CORS</span>
-          </div>
-        </div>
-
-        <div class="bento-card exposure">
-          <p class="card-label">Exposure &amp; Prior Use</p>
-          <div class="chip-list">
-            <span class="chip chip-ghost">React Native</span>
-            <span class="chip chip-ghost">React</span>
-            <span class="chip chip-ghost">PHP / Laravel</span>
-            <span class="chip chip-ghost">MySQL</span>
-            <span class="chip chip-ghost">Pydantic</span>
-            <span class="chip chip-ghost">ESLint</span>
-          </div>
+    <!-- grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div
+        v-for="group in skills"
+        :key="group.label"
+        :class="[
+          'border p-5 bg-[#05070b] flex flex-col gap-4',
+          group.wide ? 'md:col-span-2' : '',
+          group.tier === 'exposure' ? 'border-border opacity-60' : 'border-border-strong',
+        ]"
+      >
+        <p class="font-mono text-[10px] uppercase tracking-[0.4em] text-text-muted">
+          {{ group.label }}
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span
+            v-for="chip in group.chips"
+            :key="chip"
+            :class="[
+              'text-xs px-2.5 py-1 font-mono border',
+              group.tier === 'exposure'
+                ? 'border-border text-text-muted'
+                : 'border-border-strong text-text',
+            ]"
+          >
+            {{ chip }}
+          </span>
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.bento {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-}
-
-.bento-card {
-  padding: 1.75rem;
-  border-radius: 16px;
-  border: 1px solid rgba(129, 140, 248, 0.12);
-  background: rgba(13, 18, 32, 0.8);
-  transition:
-    border-color 0.25s ease,
-    background-color 0.25s ease,
-    transform 0.25s ease;
-}
-
-.bento-card:hover {
-  border-color: rgba(129, 140, 248, 0.28);
-  background: rgba(18, 25, 41, 0.9);
-  transform: translateY(-3px);
-}
-
-.bento-md {
-  grid-column: span 2;
-}
-.bento-wide {
-  grid-column: span 2;
-}
-
-.bento-full {
-  grid-column: 1 / -1;
-}
-
-.bento-pair {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-}
-
-.exposure {
-  border-style: dashed;
-  opacity: 0.9;
-  background: linear-gradient(180deg, rgba(129, 140, 248, 0.06), rgba(13, 18, 32, 0.82));
-}
-
-.card-label {
-  font-family: monospace;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-
-.chip-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.chip {
-  padding: 0.3rem 0.75rem;
-  border-radius: 6px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-}
-
-.chip-primary {
-  background: var(--chip-primary-bg);
-  color: var(--accent);
-  border: 1px solid var(--chip-primary-border);
-}
-
-.chip-accent {
-  background: var(--chip-accent-bg);
-  color: var(--chip-accent);
-  border: 1px solid var(--chip-accent-border);
-}
-
-.chip-info {
-  background: var(--chip-info-bg);
-  color: var(--chip-info);
-  border: 1px solid var(--chip-info-border);
-}
-
-.chip-warn {
-  background: var(--chip-warn-bg);
-  color: var(--chip-warn);
-  border: 1px solid var(--chip-warn-border);
-}
-
-@media (max-width: 900px) {
-  .bento {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .bento-wide {
-    grid-column: span 2;
-  }
-  .bento-full {
-    grid-column: span 2;
-  }
-}
-
-@media (max-width: 600px) {
-  .bento {
-    grid-template-columns: 1fr;
-  }
-  .bento-md,
-  .bento-wide,
-  .bento-full {
-    grid-column: span 1;
-  }
-  .bento-pair {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
