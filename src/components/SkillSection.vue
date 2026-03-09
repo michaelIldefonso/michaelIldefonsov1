@@ -28,12 +28,12 @@ const skills = [
   },
   {
     label: 'Cloud & Network',
-    tier: 'exposure',
+    tier: 'solid',
     chips: ['Cloudflare R2', 'Modal', 'CDN Caching', 'DNS / SSL', 'CORS'],
   },
   {
     label: 'Exposure & Prior Use',
-    tier: 'exposure',
+    tier: 'minimal',
     wide: true,
     chips: ['React Native', 'React', 'PHP / Laravel', 'MySQL', 'Pydantic', 'ESLint'],
   },
@@ -63,14 +63,18 @@ const skills = [
     </p>
 
     <!-- grid -->
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
       <div
         v-for="group in skills"
         :key="group.label"
         :class="[
-          'border p-5 bg-[#05070b] flex flex-col gap-4',
-          group.wide ? 'md:col-span-2' : '',
-          group.tier === 'exposure' ? 'border-border opacity-60' : 'border-border-strong',
+          'border p-4 sm:p-5 flex flex-col gap-4 transition-all duration-200',
+          group.wide ? 'sm:col-span-2 md:col-span-2' : '',
+          group.tier === 'solid'
+            ? 'bg-[#05070b] border-solid border-border-strong'
+            : group.tier === 'exposure'
+              ? 'bg-[rgba(33,38,45,0.5)] border-dashed border-border-subtle'
+              : 'bg-[rgba(21,27,35,0.4)] border-dotted border-border opacity-50',
         ]"
       >
         <p class="font-mono text-[10px] uppercase tracking-[0.4em] text-text-muted">
@@ -81,10 +85,12 @@ const skills = [
             v-for="chip in group.chips"
             :key="chip"
             :class="[
-              'text-xs px-2.5 py-1 font-mono border',
-              group.tier === 'exposure'
-                ? 'border-border text-text-muted'
-                : 'border-border-strong text-text',
+              'text-xs px-2.5 py-1 font-mono border transition-colors duration-200',
+              group.tier === 'solid'
+                ? 'border-solid border-border-strong text-text hover:text-accent hover:border-accent'
+                : group.tier === 'exposure'
+                  ? 'border-dashed border-border-subtle text-text-muted bg-[rgba(101,108,118,0.15)]'
+                  : 'border-dotted border-border-subtle text-text-disabled bg-[rgba(101,108,118,0.05)]',
             ]"
           >
             {{ chip }}

@@ -7,17 +7,34 @@ const form = reactive({ name: '', email: '', message: '' })
 const isSubmitting = ref(false)
 const submitted = ref(false)
 
-function sendEmail() {
+async function sendEmail() {
   if (isSubmitting.value) return
   isSubmitting.value = true
   submitted.value = false
-  setTimeout(() => {
-    form.name = ''
-    form.email = ''
-    form.message = ''
+
+  try {
+    const response = await fetch(
+      'https://billowing-hall-f6b1.michaelildefonso20.workers.dev/api/contact',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: form.name, email: form.email, message: form.message }),
+      },
+    )
+
+    if (response.ok) {
+      form.name = ''
+      form.email = ''
+      form.message = ''
+      submitted.value = true
+    } else {
+      console.error('Failed to send message:', response.status)
+    }
+  } catch (error) {
+    console.error('Error sending message:', error)
+  } finally {
     isSubmitting.value = false
-    submitted.value = true
-  }, 400)
+  }
 }
 
 const links = [

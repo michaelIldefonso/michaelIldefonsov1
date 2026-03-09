@@ -65,7 +65,10 @@ const scrollToSection = (e, id) => {
 </script>
 
 <template>
-  <section id="hero" class="relative max-w-6xl mx-auto px-6 pt-32 pb-16 overflow-hidden">
+  <section
+    id="hero"
+    class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-16 overflow-hidden"
+  >
     <p class="font-mono text-xs tracking-widest uppercase text-text-muted mb-4">Hello, world</p>
 
     <h1
@@ -87,10 +90,10 @@ const scrollToSection = (e, id) => {
       </p>
     </div>
 
-    <div class="flex gap-3 flex-wrap">
+    <div class="flex gap-2 sm:gap-3 flex-wrap">
       <a
         href="#contact"
-        class="px-6 py-3 bg-accent text-black font-semibold text-sm transition-colors duration-200 hover:bg-accent-hover"
+        class="px-6 py-3 bg-accent text-black font-semibold text-sm transition-colors duration-200 hover:bg-accent-hover hover:outline-border-black"
         @click="(e) => scrollToSection(e, '#contact')"
       >
         Get in touch

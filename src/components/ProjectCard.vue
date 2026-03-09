@@ -13,7 +13,9 @@ defineProps({
 </script>
 
 <template>
-  <article class="py-8 flex gap-8 group">
+  <article
+    class="py-8 flex gap-8 group hover:-translate-y-1 transition-transform duration-300 border border-border hover:border-border-strong rounded"
+  >
     <!-- number -->
     <span class="font-mono text-xs text-text-muted tracking-widest pt-1 w-6 shrink-0">
       {{ String(index + 1).padStart(2, '0') }}
