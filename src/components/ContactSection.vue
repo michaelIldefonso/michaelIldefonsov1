@@ -45,10 +45,7 @@ const links = [
 </script>
 
 <template>
-  <section
-    id="contact"
-    class="relative max-w-6xl mx-auto px-6 py-16 mt-6 overflow-hidden"
-  >
+  <section id="contact" class="relative max-w-6xl mx-auto px-6 py-16 mt-6 overflow-hidden">
     <!-- decorative lines -->
     <div
       class="pointer-events-none absolute -left-12 top-10 h-0.5 w-24 bg-linear-to-r from-white to-transparent"

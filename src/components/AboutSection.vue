@@ -12,10 +12,7 @@ const tags = ['Backend-first', 'Full-stack', 'Open to work']
 </script>
 
 <template>
-  <section
-    id="about"
-    class="relative max-w-6xl mx-auto px-6 py-16 overflow-hidden"
-  >
+  <section id="about" class="relative max-w-6xl mx-auto px-6 py-16 overflow-hidden">
     <!-- decorative lines -->
     <div
       class="pointer-events-none absolute -left-12 top-10 h-0.5 w-24 bg-linear-to-r from-white to-transparent"
