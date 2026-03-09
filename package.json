@@ -14,6 +14,9 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "resend": "^6.9.3",
     "tailwindcss": "^4.2.1",
     "vue": "^3.5.28",
     "vue-router": "^5.0.2"
